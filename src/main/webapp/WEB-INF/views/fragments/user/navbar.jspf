@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark px-4">
+
+    <a class="navbar-brand"
+       href="${pageContext.request.contextPath}/index">
+
+        Anime<span>Lord</span>
+
+    </a>
+
+    <div class="ms-auto">
+
+        <form action="${pageContext.request.contextPath}/search"
+              method="get">
+
+            <input
+                    class="form-control"
+                    name="query"
+                    type="search"
+                    placeholder="Search Anime">
+
+        </form>
+
+    </div>
+
+</nav>
