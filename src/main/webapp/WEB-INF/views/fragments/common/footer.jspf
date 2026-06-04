@@ -1,54 +1,47 @@
 <%@ page pageEncoding="UTF-8" %>
-<footer class="footer mt-5">
+<footer class="footer">
 
-    <div class="container-fluid px-md-4 px-3">
+    <div class="container footer-container">
 
-        <div class="row gy-4">
+        <div class="row">
 
             <!-- Brand -->
 
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-5 col-md-12 mb-4 footer-brand-column">
 
-                <h5 class="footer-brand">
-
+                <div class="footer-brand">
                     Anime<span>Lord</span>
-
-                </h5>
+                </div>
 
                 <p class="footer-text">
-
-                    Stream your favorite anime episodes with
-                    fast HLS playback, organized collections,
-                    and a smooth viewing experience.
-
+                    Stream your favorite anime episodes with fast HLS playback,
+                    organized collections, and a smooth viewing experience.
                 </p>
 
             </div>
 
-            <!-- Quick Links -->
+            <!-- Navigation -->
 
-            <div class="col-lg-2 col-md-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 mb-4">
 
-                <h6 class="footer-heading">
-                    Navigation
-                </h6>
+                <h4>Navigation</h4>
 
                 <ul class="footer-links">
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/index">
+                        <a href="${pageContext.request.contextPath}/">
                             Home
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/anime">
+                        <a href="#">
                             Anime
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/search">
+                        <a href="#">
                             Search
                         </a>
                     </li>
@@ -59,28 +52,26 @@
 
             <!-- Support -->
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 mb-4">
 
-                <h6 class="footer-heading">
-                    Support
-                </h6>
+                <h4>Support</h4>
 
                 <ul class="footer-links">
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/feedback">
+                        <a href="#">
                             Feedback
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/report">
+                        <a href="#">
                             Report Episode
                         </a>
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.contextPath}/contact">
+                        <a href="#">
                             Contact
                         </a>
                     </li>
@@ -89,28 +80,22 @@
 
             </div>
 
-            <!-- Dynamic Stats -->
+            <!-- Platform -->
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-4 col-sm-4 mb-4">
 
-                <h6 class="footer-heading">
-                    Platform
-                </h6>
+                <h4>Platform</h4>
 
                 <ul class="footer-stats">
 
                     <li>
                         Anime :
-                        <strong>
-                            ${totalAnime}
-                        </strong>
+                        <strong>${animeCount != null ? animeCount : 0}</strong>
                     </li>
 
                     <li>
                         Episodes :
-                        <strong>
-                            ${totalEpisodes}
-                        </strong>
+                        <strong>${episodeCount != null ? episodeCount : 0}</strong>
                     </li>
 
                     <li>
@@ -130,13 +115,13 @@
 
         <div class="footer-bottom">
 
-            <span>
-                © ${currentYear} AnimeLord
-            </span>
+            <div class="footer-bottom-left">
+                © AnimeLord
+            </div>
 
-            <span>
+            <div class="footer-bottom-right">
                 Powered by JSP • Servlets • HLS
-            </span>
+            </div>
 
         </div>
 

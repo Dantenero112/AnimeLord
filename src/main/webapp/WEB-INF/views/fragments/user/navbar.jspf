@@ -1,19 +1,22 @@
 <%@ page pageEncoding="UTF-8" %>
-<nav class="navbar navbar-dark user-navbar">
+<nav class="navbar user-navbar">
 
-    <div class="container-fluid">
+    <div class="container-fluid navbar-container">
 
-        <div class="d-flex align-items-center">
+        <!-- LEFT -->
 
-            <button id="menuBtn"
-                    class="drawer-btn">
+        <div class="navbar-left">
 
-                ☰
+            <button
+                id="drawerBtn"
+                class="drawer-btn">
+
+                <i class="bi bi-list"></i>
 
             </button>
 
-            <a class="navbar-brand ms-2"
-               href="${pageContext.request.contextPath}/index">
+            <a href="${pageContext.request.contextPath}/"
+               class="navbar-brand">
 
                 Anime<span>Lord</span>
 
@@ -21,24 +24,28 @@
 
         </div>
 
+        <!-- RIGHT -->
+
         <div class="navbar-right">
+
+            <!-- SEARCH -->
 
             <div class="search-wrapper">
 
                 <div class="search-box">
 
-                    <span class="search-icon">
-                        🔍
-                    </span>
+                    <i class="bi bi-search search-icon"></i>
 
                     <input
-                            class="form-control"
-                            type="search"
-                            placeholder="Search Anime">
+                        type="text"
+                        class="form-control"
+                        placeholder="Search Anime">
 
                 </div>
 
             </div>
+
+            <!-- LOGIN / USER -->
 
             <%@ include file="navbarActions.jspf" %>
 

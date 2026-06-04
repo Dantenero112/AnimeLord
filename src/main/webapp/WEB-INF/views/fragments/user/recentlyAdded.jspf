@@ -1,29 +1,105 @@
 <%@ page pageEncoding="UTF-8" %>
-<h5 class="mb-3">
-    📺 Recently Added
-</h5>
+<section class="recently-added-section">
 
-<div class="row g-4">
+    <h3 class="section-title">
 
-    <!-- JSTL Loop Later -->
+        📺 Recently Added
 
-    <div class="col-12 col-sm-6 col-lg-3">
+    </h3>
 
-        <div class="anime-card">
+    <div class="row g-4">
 
-            <img
-                    src="https://via.placeholder.com/400x220"
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+            <div class="anime-card">
+
+                <img
+                    src="https://via.placeholder.com/400x250"
                     alt="Anime">
 
-            <div class="ep-badge">
-                Ep 5
+                <div class="ep-badge">
+
+                    Ep 5
+
+                </div>
+
+                <div class="card-body">
+
+                    <h6>Anime Name</h6>
+
+                </div>
+
             </div>
 
-            <div class="card-body">
+        </div>
 
-                <small>
-                    Anime Name
-                </small>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+            <div class="anime-card">
+
+                <img
+                    src="https://via.placeholder.com/400x250"
+                    alt="Anime">
+
+                <div class="ep-badge">
+
+                    Ep 8
+
+                </div>
+
+                <div class="card-body">
+
+                    <h6>Anime Name</h6>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+            <div class="anime-card">
+
+                <img
+                    src="https://via.placeholder.com/400x250"
+                    alt="Anime">
+
+                <div class="ep-badge">
+
+                    Ep 11
+
+                </div>
+
+                <div class="card-body">
+
+                    <h6>Anime Name</h6>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+            <div class="anime-card">
+
+                <img
+                    src="https://via.placeholder.com/400x250"
+                    alt="Anime">
+
+                <div class="ep-badge">
+
+                    Ep 3
+
+                </div>
+
+                <div class="card-body">
+
+                    <h6>Anime Name</h6>
+
+                </div>
 
             </div>
 
@@ -31,4 +107,4 @@
 
     </div>
 
-</div>
+</section>

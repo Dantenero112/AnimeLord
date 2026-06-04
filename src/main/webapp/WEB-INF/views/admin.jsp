@@ -9,10 +9,10 @@
     <%@ include file="/WEB-INF/views/fragments/common/head.jspf" %>
 
     <title>Admin Panel - AnimeLord</title>
-
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/admin.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
 </head>
 
 <body>
