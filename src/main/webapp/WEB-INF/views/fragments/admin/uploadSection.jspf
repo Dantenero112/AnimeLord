@@ -1,53 +1,48 @@
-<div id="upload"
-     class="glass-card">
+<%@ page pageEncoding="UTF-8" %>
+<div
+        id="upload"
+        class="glass-card">
 
     <h5 class="mb-3">
-        ? Upload Episode
+
+        📤 Upload Episode
+
     </h5>
 
-    <form
-            action="${pageContext.request.contextPath}/uploadEpisode"
-            method="post"
-            enctype="multipart/form-data">
+    <div class="row g-3">
 
-        <div class="row g-3">
+        <div class="col-12 col-md-5">
 
-            <div class="col-md-4">
-
-                <input
-                        name="animeTitle"
-                        class="form-control"
-                        placeholder="Anime Title">
-
-            </div>
-
-            <div class="col-md-2">
-
-                <input
-                        name="episodeNumber"
-                        class="form-control"
-                        type="number">
-
-            </div>
-
-            <div class="col-md-6">
-
-                <input
-                        name="video"
-                        class="form-control"
-                        type="file">
-
-            </div>
+            <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Anime Title">
 
         </div>
 
-        <button
-                class="btn btn-neon mt-3">
+        <div class="col-12 col-md-2">
 
-            Upload
+            <input
+                    class="form-control"
+                    type="number"
+                    placeholder="Episode">
 
-        </button>
+        </div>
 
-    </form>
+        <div class="col-12 col-md-5">
+
+            <input
+                    class="form-control"
+                    type="file">
+
+        </div>
+
+    </div>
+
+    <button class="btn btn-neon mt-3">
+
+        Upload
+
+    </button>
 
 </div>

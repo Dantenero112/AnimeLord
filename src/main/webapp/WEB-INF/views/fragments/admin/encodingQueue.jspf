@@ -1,9 +1,11 @@
-<div id="encoding"
-     class="glass-card">
+<%@ page pageEncoding="UTF-8" %>
+<div
+        id="encoding"
+        class="glass-card">
 
     <h5 class="mb-3">
 
-        ? Encoding Queue
+        ⚡ Encoding Queue
 
     </h5>
 
@@ -26,7 +28,13 @@
 
             <tbody>
 
-                ${queueRows}
+            <tr>
+
+                <td>Example Anime</td>
+                <td>Ep 5</td>
+                <td>Processing</td>
+
+            </tr>
 
             </tbody>
 

@@ -1,24 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-dark px-4">
+<%@ page pageEncoding="UTF-8" %>
+<nav class="navbar navbar-dark user-navbar">
 
-    <a class="navbar-brand"
-       href="${pageContext.request.contextPath}/index">
+    <div class="container-fluid">
 
-        Anime<span>Lord</span>
+        <div class="d-flex align-items-center">
 
-    </a>
+            <button id="menuBtn"
+                    class="drawer-btn">
 
-    <div class="ms-auto">
+                ☰
 
-        <form action="${pageContext.request.contextPath}/search"
-              method="get">
+            </button>
 
-            <input
-                    class="form-control"
-                    name="query"
-                    type="search"
-                    placeholder="Search Anime">
+            <a class="navbar-brand ms-2"
+               href="${pageContext.request.contextPath}/index">
 
-        </form>
+                Anime<span>Lord</span>
+
+            </a>
+
+        </div>
+
+        <div class="navbar-right">
+
+            <div class="search-wrapper">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                            class="form-control"
+                            type="search"
+                            placeholder="Search Anime">
+
+                </div>
+
+            </div>
+
+            <%@ include file="navbarActions.jspf" %>
+
+        </div>
 
     </div>
 
