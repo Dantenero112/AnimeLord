@@ -1,3 +1,51 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<div id="sidebarDrawer"
+     class="sidebar-drawer">
+
+    <div class="drawer-header">
+
+        <div class="brand">
+            Anime<span>Lord</span>
+        </div>
+
+        <button
+                id="closeBtn"
+                class="close-btn">
+
+            ?
+
+        </button>
+
+    </div>
+
+    <a href="${pageContext.request.contextPath}/admin"
+       class="nav-link-custom">
+
+        Dashboard
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/upload">
+
+        Upload Episode
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/queue">
+
+        Encoding Queue
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/reports">
+
+        Reports
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/logout">
+
+        Logout
+
+    </a>
+
+</div>
