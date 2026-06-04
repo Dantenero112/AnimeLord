@@ -1,3 +1,17 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<div class="anime-card">
+
+    <img src="${coverImage}">
+
+    <div class="ep-badge">
+        Ep ${episodeNumber}
+    </div>
+
+    <div class="card-body">
+
+        <small>
+            ${animeTitle}
+        </small>
+
+    </div>
+
+</div>
