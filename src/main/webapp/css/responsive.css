@@ -1,0 +1,359 @@
+/* ==========================================
+   LARGE DESKTOP
+========================================== */
+
+@media (min-width:1400px){
+
+    .main-container{
+        max-width:1600px;
+        margin:auto;
+    }
+
+    .content{
+        max-width:1600px;
+    }
+
+}
+
+/* ==========================================
+   LAPTOP
+========================================== */
+
+@media (max-width:1200px){
+
+    .search-wrapper{
+        width:280px;
+    }
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width:992px){
+
+    /* NAVBAR */
+
+    .navbar-container{
+        padding:0 18px;
+    }
+
+    .search-wrapper{
+        width:240px;
+    }
+
+    /* INDEX */
+
+    .main-container{
+        padding:20px;
+    }
+
+    .section-title{
+        font-size:1.8rem;
+    }
+
+    .scroll-container .anime-card{
+        min-width:260px;
+        max-width:260px;
+    }
+
+    /* ADMIN */
+
+    .content{
+        padding:20px;
+    }
+
+    .page-title{
+        font-size:1.8rem;
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    /* ======================
+       NAVBAR
+    ====================== */
+
+    .navbar-container{
+        flex-wrap:wrap;
+
+        gap:12px;
+
+        padding:12px;
+    }
+
+    .navbar-left{
+        width:100%;
+        justify-content:flex-start;
+    }
+
+    .navbar-right{
+        width:100%;
+
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .search-wrapper{
+        width:100%;
+    }
+
+    .signin-btn{
+        width:100%;
+
+        text-align:center;
+    }
+
+    .user-btn{
+        width:100%;
+    }
+
+    /* ======================
+       INDEX
+    ====================== */
+
+    .main-container{
+        padding:15px;
+    }
+
+    .spotlight{
+        padding:20px;
+
+        margin-bottom:30px;
+    }
+
+    .section-title{
+        font-size:1.5rem;
+    }
+
+    .scroll-container .anime-card{
+        min-width:240px;
+        max-width:240px;
+    }
+
+    .anime-card img{
+        height:180px;
+    }
+
+/* ==========================================
+   FOOTER RESPONSIVE
+========================================== */
+
+/* Tablet */
+@media (min-width:768px) and (max-width:991px){
+
+    .footer-brand-column{
+        align-items:center;
+    }
+
+    .footer-brand{
+        text-align:center;
+    }
+
+    .footer-text{
+        text-align:center;
+
+        max-width:650px;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .footer{
+        text-align:center;
+    }
+
+    .footer-brand{
+        font-size:2.4rem;
+    }
+
+    .footer-text{
+        max-width:none;
+        margin:0 auto;
+    }
+
+    .footer .row > div{
+        margin-bottom:25px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+    }
+
+    .footer-bottom-left,
+    .footer-bottom-right{
+        text-align:center;
+        width:100%;
+    }
+
+}
+
+/* Small Mobile */
+@media(max-width:576px){
+
+    .footer{
+        padding:40px 0 20px;
+    }
+
+    .footer-brand{
+        font-size:2rem;
+    }
+
+    .footer h4{
+        margin-bottom:14px;
+    }
+
+    .footer-links li,
+    .footer-stats li{
+        margin-bottom:10px;
+    }
+
+}
+
+    /* ======================
+       ADMIN
+    ====================== */
+
+    .content{
+        padding:15px;
+    }
+
+    .glass-card{
+        padding:16px;
+    }
+
+    .page-title{
+        font-size:1.6rem;
+    }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:576px){
+
+    /* ======================
+       NAVBAR
+    ====================== */
+
+    .navbar-brand{
+        font-size:1.6rem;
+    }
+
+    .drawer-btn{
+        font-size:24px;
+    }
+
+    .user-drawer{
+        width:280px;
+        left:-280px;
+    }
+
+    .search-box .form-control{
+        height:40px;
+    }
+
+    /* ======================
+       INDEX
+    ====================== */
+
+    .main-container{
+        padding:12px;
+    }
+
+    .spotlight{
+        padding:16px;
+    }
+
+    .section-title{
+        font-size:1.35rem;
+    }
+
+    .scroll-container .anime-card{
+        min-width:220px;
+        max-width:220px;
+    }
+
+    .anime-card img{
+        height:160px;
+    }
+
+    .card-body{
+        padding:12px;
+    }
+
+    /* ======================
+       FOOTER
+    ====================== */
+
+    .footer{
+        padding:40px 0 20px;
+    }
+
+    .footer-brand{
+        font-size:1.7rem;
+    }
+
+    /* ======================
+       ADMIN
+    ====================== */
+
+    .content{
+        padding:10px;
+    }
+
+    .page-title{
+        font-size:1.4rem;
+    }
+
+    .table{
+        font-size:.85rem;
+    }
+
+    .btn-neon{
+        width:100%;
+    }
+
+}
+
+/* ==========================================
+   VERY SMALL DEVICES
+========================================== */
+
+@media (max-width:400px){
+
+    .navbar-brand{
+        font-size:1.4rem;
+    }
+
+    .scroll-container .anime-card{
+        min-width:200px;
+        max-width:200px;
+    }
+
+    .anime-card img{
+        height:140px;
+    }
+
+    .section-title{
+        font-size:1.2rem;
+    }
+
+}

@@ -6,29 +6,49 @@
 
 <head>
 
+    <title>AnimeLord</title>
+
     <%@ include file="/WEB-INF/views/fragments/common/head.jspf" %>
 
-    <title>AnimeLord</title>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/main.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/components.css">
 
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/index.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/responsive.css">
 
 </head>
 
 <body>
 
-    <%@ include file="/WEB-INF/views/fragments/user/navbar.jspf" %>
+    <!-- Drawer -->
+
     <%@ include file="/WEB-INF/views/fragments/user/userDrawer.jspf" %>
 
-    <div class="container-fluid px-md-4 px-2 mt-4">
+    <!-- Navbar -->
+
+    <%@ include file="/WEB-INF/views/fragments/user/navbar.jspf" %>
+
+    <!-- Main Content -->
+
+    <main class="main-container">
 
         <%@ include file="/WEB-INF/views/fragments/user/spotlight.jspf" %>
 
         <%@ include file="/WEB-INF/views/fragments/user/recentlyAdded.jspf" %>
 
-    </div>
+    </main>
+
+    <!-- Footer -->
 
     <%@ include file="/WEB-INF/views/fragments/common/footer.jspf" %>
+
+    <!-- Scripts -->
 
     <%@ include file="/WEB-INF/views/fragments/common/scripts.jspf" %>
 

@@ -1,0 +1,124 @@
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ==========================================
+   HTML/BODY
+========================================== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+html,
+body{
+    min-height:100%;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at top,
+            #0f172a,
+            #020617
+        );
+
+    color:#e2e8f0;
+
+    font-family:'Segoe UI',sans-serif;
+
+    overflow-x:hidden;
+}
+
+/* ==========================================
+   LINKS
+========================================== */
+
+a{
+    text-decoration:none;
+}
+
+/* ==========================================
+   IMAGES
+========================================== */
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+/* ==========================================
+   LISTS
+========================================== */
+
+ul,
+ol{
+    margin:0;
+    padding:0;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin-bottom:0;
+    font-weight:600;
+}
+
+p{
+    margin-bottom:0;
+}
+
+/* ==========================================
+   CONTAINERS
+========================================== */
+
+.container-fluid{
+    width:100%;
+}
+
+/* ==========================================
+   UTILITIES
+========================================== */
+
+.text-neon{
+    color:#22d3ee;
+}
+
+.text-muted-custom{
+    color:#94a3b8;
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#22d3ee;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#06b6d4;
+}

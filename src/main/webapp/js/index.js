@@ -1,5 +1,5 @@
-const menuBtn = document.getElementById("menuBtn");
-const closeBtn = document.getElementById("closeBtn");
+const menuBtn = document.getElementById("drawerBtn");
+const closeBtn = document.getElementById("closeDrawerBtn");
 
 const drawer = document.getElementById("userDrawer");
 const overlay = document.getElementById("overlay");
