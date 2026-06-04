@@ -1,12 +1,33 @@
+<%@ page pageEncoding="UTF-8" %>
 <div class="spotlight">
 
-    <h4>
-        ? Spotlight Picks
+    <h4 class="mb-3">
+        🎆 Spotlight Picks
     </h4>
 
-    <div class="scroll-container mt-3">
+    <div class="scroll-container">
 
-        ${spotlightContent}
+        <!-- JSTL Loop Later -->
+
+        <div class="anime-card" style="min-width:280px;">
+
+            <img
+                    src="https://via.placeholder.com/400x220"
+                    alt="Anime">
+
+            <div class="ep-badge">
+                Ep 12
+            </div>
+
+            <div class="card-body">
+
+                <small>
+                    Featured Anime
+                </small>
+
+            </div>
+
+        </div>
 
     </div>
 

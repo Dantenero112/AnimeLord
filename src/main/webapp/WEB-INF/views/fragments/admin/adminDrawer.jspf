@@ -1,48 +1,62 @@
+<%@ page pageEncoding="UTF-8" %>
+<div id="overlay"
+     class="overlay"></div>
+
 <div id="sidebarDrawer"
      class="sidebar-drawer">
 
     <div class="drawer-header">
 
         <div class="brand">
+
             Anime<span>Lord</span>
+
         </div>
 
-        <button
-                id="closeBtn"
+        <button id="closeBtn"
                 class="close-btn">
 
-            ?
+            ✕
 
         </button>
 
     </div>
 
-    <a href="${pageContext.request.contextPath}/admin"
-       class="nav-link-custom">
+    <a
+            href="${pageContext.request.contextPath}/admin"
+            class="nav-link-custom active">
 
         Dashboard
 
     </a>
 
-    <a href="${pageContext.request.contextPath}/upload">
+    <a
+            href="#upload"
+            class="nav-link-custom">
 
         Upload Episode
 
     </a>
 
-    <a href="${pageContext.request.contextPath}/queue">
+    <a
+            href="#encoding"
+            class="nav-link-custom">
 
         Encoding Queue
 
     </a>
 
-    <a href="${pageContext.request.contextPath}/reports">
+    <a
+            href="#reports"
+            class="nav-link-custom">
 
         Reports
 
     </a>
 
-    <a href="${pageContext.request.contextPath}/logout">
+    <a
+            href="${pageContext.request.contextPath}/logout"
+            class="nav-link-custom">
 
         Logout
 
