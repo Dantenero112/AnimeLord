@@ -1,15 +1,17 @@
 /* ==========================
-   BODY
+   GLOBAL
 ========================== */
 
 body{
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color: #e2e8f0;
-    font-family: 'Segoe UI', sans-serif;
+    background:radial-gradient(circle at top,#0f172a,#020617);
+    color:#e2e8f0;
+    font-family:'Segoe UI',sans-serif;
+
+    margin:0;
 }
 
 /* ==========================
-   TOP NAVBAR
+   NAVBAR
 ========================== */
 
 .admin-navbar{
@@ -20,9 +22,9 @@ body{
 
     padding:0 20px;
 
-    background:rgba(15,23,42,0.95);
+    background:rgba(15,23,42,.95);
 
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
 
     position:sticky;
     top:0;
@@ -31,20 +33,16 @@ body{
 }
 
 .menu-btn{
-    background:none;
     border:none;
+    background:none;
 
     color:#22d3ee;
 
-    font-size:28px;
+    font-size:26px;
 
     cursor:pointer;
 
     margin-right:15px;
-}
-
-.menu-btn:hover{
-    color:#06b6d4;
 }
 
 .navbar-brand-custom{
@@ -57,7 +55,7 @@ body{
 }
 
 /* ==========================
-   SIDEBAR DRAWER
+   DRAWER
 ========================== */
 
 .sidebar-drawer{
@@ -69,17 +67,15 @@ body{
     width:280px;
     height:100vh;
 
-    background:rgba(15,23,42,0.98);
+    background:rgba(15,23,42,.98);
 
     backdrop-filter:blur(10px);
-
-    border-right:1px solid rgba(255,255,255,0.05);
-
-    padding:20px;
 
     transition:left .3s ease;
 
     z-index:1200;
+
+    overflow-y:auto;
 }
 
 .sidebar-drawer.show{
@@ -95,84 +91,50 @@ body{
     align-items:center;
     justify-content:space-between;
 
-    min-height:50px;
+    padding:20px;
 
-    margin-bottom:20px;
-    padding-bottom:15px;
-
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
-
-/* ==========================
-   BRAND
-========================== */
 
 .brand{
     font-size:22px;
-    font-weight:600;
-
-    margin:0;
-    line-height:1;
+    font-weight:700;
 }
 
 .brand span{
     color:#22d3ee;
 }
 
-/* ==========================
-   CLOSE BUTTON
-========================== */
-
 .close-btn{
-    all:unset;
-
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    border:none;
+    background:none;
 
     color:#22d3ee;
 
-    font-size:22px;
-    line-height:1;
+    font-size:24px;
 
     cursor:pointer;
-
-    border-radius:50%;
-
-    transition:.2s ease;
-}
-
-.close-btn:hover{
-    background:rgba(34,211,238,0.12);
-    color:#06b6d4;
 }
 
 /* ==========================
-   NAV LINKS
+   LINKS
 ========================== */
 
 .nav-link-custom{
     display:block;
 
-    padding:10px 12px;
-
-    margin-bottom:8px;
-
-    border-radius:8px;
-
-    color:#cbd5f5;
+    padding:14px 20px;
 
     text-decoration:none;
 
-    transition:.2s ease;
+    color:#cbd5f5;
+
+    transition:.2s;
 }
 
 .nav-link-custom:hover,
 .nav-link-custom.active{
-    background:rgba(34,211,238,0.15);
+    background:rgba(34,211,238,.15);
     color:#22d3ee;
 }
 
@@ -183,13 +145,9 @@ body{
 .overlay{
     position:fixed;
 
-    top:0;
-    left:0;
+    inset:0;
 
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,.5);
 
     opacity:0;
     visibility:hidden;
@@ -205,10 +163,14 @@ body{
 }
 
 /* ==========================
-   MAIN CONTENT
+   CONTENT
 ========================== */
 
 .content{
+    max-width:1400px;
+
+    margin:auto;
+
     padding:25px;
 }
 
@@ -217,15 +179,15 @@ body{
 ========================== */
 
 .glass-card{
-    background:rgba(255,255,255,0.04);
+    background:rgba(255,255,255,.04);
 
-    border-radius:14px;
+    border-radius:16px;
 
-    padding:18px;
+    padding:20px;
 
     margin-bottom:20px;
 
-    border:1px solid rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,.05);
 }
 
 /* ==========================
@@ -235,6 +197,7 @@ body{
 .btn-neon{
     background:#22d3ee;
     color:#020617;
+
     border:none;
 }
 
@@ -244,8 +207,30 @@ body{
 }
 
 /* ==========================
-   TABLES
+   FORM CONTROLS
 ========================== */
+
+.form-control{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#fff;
+}
+
+.form-control:focus{
+    background:rgba(255,255,255,.08);
+    border-color:#22d3ee;
+
+    box-shadow:none;
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.table-responsive{
+    overflow-x:auto;
+}
 
 .table-dark{
     background:transparent;
@@ -253,7 +238,7 @@ body{
 
 .table-dark th,
 .table-dark td{
-    border-color:rgba(255,255,255,0.1);
+    border-color:rgba(255,255,255,.08);
 }
 
 /* ==========================
@@ -273,6 +258,58 @@ body{
     border-radius:10px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background:#06b6d4;
+/* ==========================
+   TABLET
+========================== */
+
+@media(max-width:992px){
+
+    .content{
+        padding:18px;
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+    .content{
+        padding:15px;
+    }
+
+    .navbar-brand-custom{
+        font-size:20px;
+    }
+
+    .content h3{
+        font-size:1.4rem;
+    }
+
+    .glass-card{
+        padding:15px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .content{
+        padding:10px;
+    }
+
+    .table{
+        font-size:.85rem;
+    }
+
+    .menu-btn{
+        font-size:22px;
+    }
+
+    .navbar-brand-custom{
+        font-size:18px;
+    }
+
 }

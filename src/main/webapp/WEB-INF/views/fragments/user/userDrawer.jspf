@@ -1,0 +1,75 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div id="overlay"
+     class="overlay"></div>
+
+<div id="userDrawer"
+     class="user-drawer">
+
+    <div class="drawer-header">
+
+        <div class="brand">
+
+            Anime<span>Lord</span>
+
+        </div>
+
+        <button id="closeBtn"
+                class="close-btn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <a href="${pageContext.request.contextPath}/index"
+       class="drawer-link">
+
+        Home
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/anime"
+       class="drawer-link">
+
+        Anime
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/genres"
+       class="drawer-link">
+
+        Genres
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/ongoing"
+       class="drawer-link">
+
+        Ongoing
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/recent"
+       class="drawer-link">
+
+        Recently Added
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/request"
+       class="drawer-link">
+
+        Request Anime
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/contact"
+       class="drawer-link">
+
+        Contact
+
+    </a>
+
+</div>

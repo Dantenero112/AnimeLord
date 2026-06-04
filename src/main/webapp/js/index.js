@@ -1,6 +1,22 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
+const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn");
 
+const drawer = document.getElementById("userDrawer");
+const overlay = document.getElementById("overlay");
 
+menuBtn.addEventListener("click", () => {
+
+    drawer.classList.add("show");
+    overlay.classList.add("show");
+
+});
+
+closeBtn.addEventListener("click", closeDrawer);
+overlay.addEventListener("click", closeDrawer);
+
+function closeDrawer(){
+
+    drawer.classList.remove("show");
+    overlay.classList.remove("show");
+
+}
