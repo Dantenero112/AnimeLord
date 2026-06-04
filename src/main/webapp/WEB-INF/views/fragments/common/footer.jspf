@@ -1,0 +1,144 @@
+<footer class="footer mt-5">
+
+    <div class="container-fluid px-md-4 px-3">
+
+        <div class="row gy-4">
+
+            <!-- Brand -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <h5 class="footer-brand">
+
+                    Anime<span>Lord</span>
+
+                </h5>
+
+                <p class="footer-text">
+
+                    Stream your favorite anime episodes with
+                    fast HLS playback, organized collections,
+                    and a smooth viewing experience.
+
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="col-lg-2 col-md-6">
+
+                <h6 class="footer-heading">
+                    Navigation
+                </h6>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/index">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/anime">
+                            Anime
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/search">
+                            Search
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Support -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <h6 class="footer-heading">
+                    Support
+                </h6>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/feedback">
+                            Feedback
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/report">
+                            Report Episode
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/contact">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Dynamic Stats -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <h6 class="footer-heading">
+                    Platform
+                </h6>
+
+                <ul class="footer-stats">
+
+                    <li>
+                        Anime :
+                        <strong>
+                            ${totalAnime}
+                        </strong>
+                    </li>
+
+                    <li>
+                        Episodes :
+                        <strong>
+                            ${totalEpisodes}
+                        </strong>
+                    </li>
+
+                    <li>
+                        Status :
+                        <span class="text-success">
+                            Online
+                        </span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+
+            <span>
+                © ${currentYear} AnimeLord
+            </span>
+
+            <span>
+                Powered by JSP ? Servlets ? HLS
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
