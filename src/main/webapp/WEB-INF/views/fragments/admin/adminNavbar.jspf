@@ -1,3 +1,22 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<nav class="admin-navbar">
+
+    <button
+            id="menuBtn"
+            class="menu-btn">
+
+        ?
+
+    </button>
+
+    <div class="navbar-brand-custom">
+
+        Anime<span>Lord</span>
+
+    </div>
+
+</nav>
+
+<div id="overlay"
+     class="overlay">
+
+</div>
