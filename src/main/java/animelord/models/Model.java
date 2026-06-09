@@ -11,5 +11,5 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author Yahiya
  */
 public interface Model {
-    public void businessLogic(HttpServletRequest req, HttpServletResponse res)throws ServletException;
+    public void businessLogic(HttpServletRequest req, HttpServletResponse res)throws Exception;
 }
