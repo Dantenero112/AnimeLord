@@ -43,11 +43,7 @@ String username = (String)session.getAttribute("username");
 
             <li>
                 <a class="dropdown-item"
-                   href="${pageContext.request.contextPath}/logout">
-
-                    Logout
-
-                </a>
+                    href="${pageContext.request.contextPath}/logout"> Logout </a>
             </li>
 
         </ul>
