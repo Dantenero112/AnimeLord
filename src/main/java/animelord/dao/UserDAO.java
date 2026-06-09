@@ -19,9 +19,11 @@ public class UserDAO {
                 + "username,"
                 + "email,"
                 + "password_hash,"
-                + "role"
+                + "role,"
+                + "email_verified,"
+                + "verification_token"
                 + ") "
-                + "VALUES(?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?)";
 
         try (
                 Connection con =
@@ -51,6 +53,16 @@ public class UserDAO {
                     user.getRole()
             );
 
+            ps.setBoolean(
+                    5,
+                    user.isEmailVerified()
+            );
+
+            ps.setString(
+                    6,
+                    user.getVerificationToken()
+            );
+
             return ps.executeUpdate() > 0;
 
         }
@@ -61,7 +73,6 @@ public class UserDAO {
             return false;
         }
     }
-
     /*
         LOGIN USING USERNAME
     */
@@ -181,7 +192,80 @@ public class UserDAO {
 
         return null;
     }
+    /*
+    GET USER BY VERIFICATION TOKEN
+    */
+    public User getUserByVerificationToken(
+            String token) {
 
+        String sql =
+                "SELECT * "
+                + "FROM users "
+                + "WHERE verification_token=?";
+
+        try (
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ) {
+
+            ps.setString(1, token);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            if (rs.next()) {
+
+                return mapUser(rs);
+
+            }
+
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+    }
+    /*
+    VERIFY USER ACCOUNT
+    */
+    public boolean verifyUser(
+            String token) {
+
+        String sql =
+                "UPDATE users "
+                + "SET email_verified=true, "
+                + "verification_token=NULL "
+                + "WHERE verification_token=?";
+
+        try (
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ) {
+
+            ps.setString(
+                    1,
+                    token
+            );
+
+            return ps.executeUpdate() > 0;
+
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+
+            return false;
+        }
+    }
     /*
         GET ALL USERS
     */
@@ -497,6 +581,18 @@ public class UserDAO {
         user.setCreatedAt(
                 rs.getTimestamp(
                         "created_at"
+                )
+        );
+        
+        user.setEmailVerified(
+        rs.getBoolean(
+                "email_verified"
+        )
+        );
+
+        user.setVerificationToken(
+                rs.getString(
+                        "verification_token"
                 )
         );
 

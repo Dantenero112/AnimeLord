@@ -8,13 +8,17 @@ public class Anime {
 
     private String title;
 
-    private String description;
+    private String synopsis;
 
-    private String posterPath;
+    private String coverImage;
+
+    private String bannerImage;
+
+    private int releaseYear;
 
     private String status;
 
-    private int releaseYear;
+    private long totalViews;
 
     private Timestamp createdAt;
 
@@ -30,18 +34,22 @@ public class Anime {
     public Anime(
             int animeId,
             String title,
-            String description,
-            String posterPath,
-            String status,
+            String synopsis,
+            String coverImage,
+            String bannerImage,
             int releaseYear,
+            String status,
+            long totalViews,
             Timestamp createdAt) {
 
         this.animeId = animeId;
         this.title = title;
-        this.description = description;
-        this.posterPath = posterPath;
-        this.status = status;
+        this.synopsis = synopsis;
+        this.coverImage = coverImage;
+        this.bannerImage = bannerImage;
         this.releaseYear = releaseYear;
+        this.status = status;
+        this.totalViews = totalViews;
         this.createdAt = createdAt;
     }
 
@@ -65,20 +73,36 @@ public class Anime {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSynopsis() {
+        return synopsis;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getCoverImage() {
+        return coverImage;
     }
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public String getBannerImage() {
+        return bannerImage;
+    }
+
+    public void setBannerImage(String bannerImage) {
+        this.bannerImage = bannerImage;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public String getStatus() {
@@ -89,12 +113,12 @@ public class Anime {
         this.status = status;
     }
 
-    public int getReleaseYear() {
-        return releaseYear;
+    public long getTotalViews() {
+        return totalViews;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setTotalViews(long totalViews) {
+        this.totalViews = totalViews;
     }
 
     public Timestamp getCreatedAt() {
@@ -110,11 +134,13 @@ public class Anime {
 
         return "Anime{"
                 + "animeId=" + animeId
-                + ", title=" + title
-                + ", description=" + description
-                + ", posterPath=" + posterPath
-                + ", status=" + status
+                + ", title='" + title + '\''
+                + ", synopsis='" + synopsis + '\''
+                + ", coverImage='" + coverImage + '\''
+                + ", bannerImage='" + bannerImage + '\''
                 + ", releaseYear=" + releaseYear
+                + ", status='" + status + '\''
+                + ", totalViews=" + totalViews
                 + ", createdAt=" + createdAt
                 + '}';
     }
