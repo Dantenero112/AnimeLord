@@ -141,7 +141,7 @@
     .anime-card img{
         height:180px;
     }
-
+}
 /* ==========================================
    FOOTER RESPONSIVE
 ========================================== */
@@ -241,7 +241,7 @@
         font-size:1.6rem;
     }
 
-}
+
 
 /* ==========================================
    SMALL MOBILE
@@ -354,6 +354,483 @@
 
     .section-title{
         font-size:1.2rem;
+    }
+
+}
+
+/* ==========================================
+   TRENDING HERO RESPONSIVE
+========================================== */
+
+@media(max-width:991px){
+
+    .hero-banner,
+    .hero-image{
+        height:550px;
+    }
+
+    .hero-content{
+        padding-left:50px;
+
+        max-width:600px;
+    }
+
+    .hero-title{
+        font-size:3rem;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .hero-banner,
+    .hero-image{
+        height:500px;
+    }
+
+    .hero-overlay{
+        background:
+            linear-gradient(
+                180deg,
+                rgba(2,6,23,.55),
+                rgba(2,6,23,.95)
+            );
+    }
+
+    .hero-content{
+        padding:25px;
+
+        max-width:100%;
+    }
+
+    .hero-title{
+        font-size:2.3rem;
+    }
+
+    .hero-synopsis{
+        font-size:1rem;
+
+        -webkit-line-clamp:3;
+    }
+
+    .hero-meta{
+        gap:10px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .hero-banner,
+    .hero-image{
+        height:450px;
+    }
+
+    .hero-title{
+        font-size:1.8rem;
+    }
+
+    .hero-tag{
+        font-size:.8rem;
+    }
+
+    .hero-meta span{
+        font-size:.85rem;
+
+        padding:6px 12px;
+    }
+
+    .watch-btn{
+        width:100%;
+
+        text-align:center;
+    }
+
+}
+/* ==========================================
+   RECOMMENDED SECTION
+========================================== */
+
+.recommended-section{
+    margin-bottom:70px;
+}
+
+.anime-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(240px,1fr)
+        );
+
+    gap:25px;
+}
+
+.anime-card{
+    background:
+        rgba(15,23,42,.95);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+    height:100%;
+}
+
+.anime-card:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(34,211,238,.25);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+}
+
+.anime-poster-wrapper{
+    position:relative;
+}
+
+.anime-poster{
+    width:100%;
+
+    height:330px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.anime-status{
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    background:
+        rgba(2,6,23,.85);
+
+    color:#22d3ee;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+}
+
+.anime-card-body{
+    padding:18px;
+}
+
+.anime-title{
+    color:#ffffff;
+
+    font-size:1.05rem;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+    min-height:48px;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+}
+
+.anime-meta{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#94a3b8;
+
+    font-size:.9rem;
+
+    margin-bottom:16px;
+}
+
+.anime-btn{
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:#22d3ee;
+
+    color:#02111f;
+
+    font-weight:700;
+
+    transition:.3s ease;
+}
+
+.anime-btn:hover{
+    background:#67e8f9;
+
+    color:#02111f;
+}
+
+@media(max-width:768px){
+
+    .episode-grid{
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+@media(max-width:576px){
+
+    .episode-grid{
+        grid-template-columns:
+            repeat(
+                1,
+                1fr
+            );
+    }
+
+}
+
+/* ==========================================
+   NEW RELEASES RESPONSIVE
+========================================== */
+
+@media(max-width:991px){
+
+    .anime-grid-small{
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+@media(max-width:576px){
+
+    .anime-grid-small{
+        grid-template-columns:
+            repeat(
+                1,
+                1fr
+            );
+    }
+
+}
+
+/* ==========================================
+   ADMIN PANEL RESPONSIVE
+========================================== */
+
+/* TABLET */
+
+@media (max-width:992px){
+
+    .admin-footer-content{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:30px;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+    /* CONTENT */
+
+    .content{
+
+        padding:15px 12px;
+    }
+
+    /* DASHBOARD */
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    /* QUICK ACTIONS */
+
+    .form-actions{
+
+        flex-direction:column;
+    }
+
+    .form-actions a,
+    .form-actions button{
+
+        width:100%;
+    }
+
+    /* ADMIN CARD */
+
+    .admin-card{
+
+        padding:18px;
+    }
+
+    /* FOOTER */
+
+    .admin-footer-content{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:25px;
+    }
+
+    .admin-footer-brand p{
+
+        max-width:none;
+
+        margin:12px auto 0;
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:12px;
+    }
+
+    .footer-bottom-left,
+    .footer-bottom-center,
+    .footer-bottom-right{
+
+        width:100%;
+    }
+
+    /* TABLES */
+
+    .table{
+
+        min-width:420px;
+    }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width:576px){
+
+    .admin-section{
+
+        padding:10px;
+    }
+
+    .glass-card{
+
+        padding:14px;
+    }
+
+    .admin-card{
+
+        padding:14px;
+    }
+
+    .admin-section-header h2{
+
+        font-size:1.5rem;
+    }
+
+    .table{
+
+        min-width:380px;
+    }
+
+}
+
+/* VERY SMALL DEVICES */
+
+@media (max-width:400px){
+
+    .table{
+
+        min-width:350px;
+    }
+
+    .admin-footer-brand h4{
+
+        font-size:1.5rem;
+    }
+
+}
+
+/* ==========================================
+   ADMIN ACTION BAR RESPONSIVE
+========================================== */
+
+@media (max-width:992px){
+
+    .admin-action-bar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .admin-search-form{
+
+        width:100%;
+    }
+
+    .admin-action-btn{
+
+        width:100%;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .admin-search-form{
+
+        flex-direction:column;
+    }
+
+    .admin-search-form .form-control,
+    .admin-search-form .btn-neon,
+    .admin-action-btn{
+
+        width:100%;
+
+        min-width:unset;
     }
 
 }

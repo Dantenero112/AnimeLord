@@ -38,9 +38,13 @@
 
     <main class="main-container">
 
-        <%@ include file="/WEB-INF/views/fragments/user/spotlight.jspf" %>
-
+        <%@ include file="/WEB-INF/views/fragments/user/trending.jspf" %>
+        <%@ include file="/WEB-INF/views/fragments/user/recommended.jspf" %>
         <%@ include file="/WEB-INF/views/fragments/user/recentlyAdded.jspf" %>
+        <%@ include file="/WEB-INF/views/fragments/user/newReleases.jspf" %>
+        <%@ include file="/WEB-INF/views/fragments/user/upcoming.jspf" %>
+        <%@ include file="/WEB-INF/views/fragments/user/completed.jspf" %>
+        
 
     </main>
 
