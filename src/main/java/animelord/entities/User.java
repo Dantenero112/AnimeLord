@@ -15,7 +15,10 @@ public class User {
     private String role;
 
     private Timestamp createdAt;
+    
+    private boolean emailVerified;
 
+    private String verificationToken;
     /*
         DEFAULT CONSTRUCTOR
     */
@@ -91,6 +94,22 @@ public class User {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+    
+    public boolean isEmailVerified() {
+    return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
     }
 
     /*

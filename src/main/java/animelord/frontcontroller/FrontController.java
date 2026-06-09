@@ -13,10 +13,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.util.Properties;
 import animelord.models.Model;
+import jakarta.servlet.annotation.MultipartConfig;
 /**
  *
  * @author Lenovo
  */
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024,
+    maxFileSize = 20 * 1024 * 1024,
+    maxRequestSize = 50 * 1024 * 1024
+)
+
 public class FrontController extends HttpServlet {
 
     /**
@@ -36,15 +43,12 @@ public class FrontController extends HttpServlet {
         String context = request.getContextPath();
         String path = uri.substring(context.length());
         
-        if (path == null || path.equals("/") || path.equals("") || path.equals("/index")) {
-            response.setContentType("text/html;charset=UTF-8");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-            return;
+        if (path == null || path.equals("/") || path.equals("")) {
+            path = "index";
         }
 //        System.out.println("path = "+path);
-        if(path!=null){
+        else{
             path = path.substring(1).trim();
-//            System.out.println("Inside path!=null path = "+path);
         }
         System.out.println("path = "+path);
         Properties prop = new Properties();
