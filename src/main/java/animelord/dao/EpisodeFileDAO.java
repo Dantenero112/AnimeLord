@@ -134,7 +134,149 @@ public class EpisodeFileDAO {
 
         return null;
     }
+    
+    /*
+    FILE EXISTS?
+    */
+    public boolean episodeFileExists(
+            int episodeId) {
 
+        String sql =
+                "SELECT 1 "
+                + "FROM episode_files "
+                + "WHERE episode_id=?";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    episodeId
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            return rs.next();
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+    }
+    /*
+        STREAM READY?
+    */
+    public boolean isEpisodeStreamReady(
+            int episodeId) {
+
+        EpisodeFile episodeFile =
+                getEpisodeFileByEpisodeId(
+                        episodeId
+                );
+
+        return episodeFile != null
+                && episodeFile.getMasterPlaylist() != null
+                && !episodeFile.getMasterPlaylist()
+                               .isBlank();
+    }
+    /*
+    GET THUMBNAIL
+    */
+    public String getThumbnailPath(
+            int episodeId) {
+
+        String sql =
+                "SELECT thumbnail_path "
+                + "FROM episode_files "
+                + "WHERE episode_id=?";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    episodeId
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getString(
+                        "thumbnail_path"
+                );
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+    }
+    /*
+    GET PLAYLIST PATH
+    */
+    public String getMasterPlaylistPath(
+            int episodeId) {
+
+        String sql =
+                "SELECT master_playlist "
+                + "FROM episode_files "
+                + "WHERE episode_id=?";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    episodeId
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getString(
+                        "master_playlist"
+                );
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+    }
     /*
         UPDATE MASTER PLAYLIST
     */
