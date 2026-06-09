@@ -41,7 +41,14 @@
 
         <%
             String error =
-                (String) request.getAttribute("error");
+                    (String) session.getAttribute(
+                            "error"
+                    );
+
+            String success =
+                    (String) session.getAttribute(
+                            "success"
+                    );
         %>
 
         <% if(error != null){ %>
@@ -54,8 +61,28 @@
 
         <% } %>
 
+        <% if(success != null){ %>
+
+            <div class="alert alert-success">
+
+                <%= success %>
+
+            </div>
+
+        <% } %>
+
+        <%
+            session.removeAttribute(
+                    "error"
+            );
+
+            session.removeAttribute(
+                    "success"
+            );
+        %>
+
         <form
-            action="${pageContext.request.contextPath}/login"
+            action="${pageContext.request.contextPath}/doLogin"
             method="post">
 
             <div class="mb-3">
@@ -94,7 +121,7 @@
 
             <button
                 type="submit"
-                class="btn btn-neon auth-btn">
+                class="btn auth-btn">
 
                 Login
 

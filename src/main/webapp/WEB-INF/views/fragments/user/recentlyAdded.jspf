@@ -1,109 +1,77 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <section class="recently-added-section">
 
-    <h3 class="section-title">
+    <div class="section-header">
 
-        📺 Recently Added
+        <a href="${pageContext.request.contextPath}/recent"
+           class="section-link">
 
-    </h3>
+            📺 Recently Added Episodes →
 
-    <div class="row g-4">
+        </a>
 
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+    </div>
 
-            <div class="anime-card">
+    <div class="episode-grid">
 
-                <img
-                    src="https://via.placeholder.com/400x250"
-                    alt="Anime">
+        <c:forEach items="${recentEpisodes}"
+                   var="episode">
 
-                <div class="ep-badge">
+            <div class="episode-card">
 
-                    Ep 5
+                <div class="episode-thumbnail-wrapper">
 
-                </div>
+                    <img
+                        src="${episode.thumbnailPath}"
+                        alt="${episode.animeTitle}"
+                        class="episode-thumbnail">
 
-                <div class="card-body">
+                    <div class="episode-badge">
 
-                    <h6>Anime Name</h6>
+                        EP ${episode.episodeNumber}
 
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-
-            <div class="anime-card">
-
-                <img
-                    src="https://via.placeholder.com/400x250"
-                    alt="Anime">
-
-                <div class="ep-badge">
-
-                    Ep 8
+                    </div>
 
                 </div>
 
-                <div class="card-body">
+                <div class="episode-card-body">
 
-                    <h6>Anime Name</h6>
+                    <h5 class="episode-anime-title">
 
-                </div>
+                        ${episode.animeTitle}
 
-            </div>
+                    </h5>
 
-        </div>
+                    <p class="episode-title">
 
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        ${episode.episodeTitle}
 
-            <div class="anime-card">
+                    </p>
 
-                <img
-                    src="https://via.placeholder.com/400x250"
-                    alt="Anime">
+                    <div class="episode-meta">
 
-                <div class="ep-badge">
+                        <span>
 
-                    Ep 11
+                            ${episode.uploadDate}
 
-                </div>
+                        </span>
 
-                <div class="card-body">
+                    </div>
 
-                    <h6>Anime Name</h6>
+                    <a href="${pageContext.request.contextPath}/watch?episodeId=${episode.episodeId}"
+                       class="episode-btn">
+
+                        Watch Now
+
+                    </a>
 
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-
-            <div class="anime-card">
-
-                <img
-                    src="https://via.placeholder.com/400x250"
-                    alt="Anime">
-
-                <div class="ep-badge">
-
-                    Ep 3
-
-                </div>
-
-                <div class="card-body">
-
-                    <h6>Anime Name</h6>
-
-                </div>
-
-            </div>
-
-        </div>
+        </c:forEach>
 
     </div>
 

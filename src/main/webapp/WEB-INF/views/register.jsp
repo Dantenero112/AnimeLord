@@ -41,10 +41,14 @@
 
         <%
             String error =
-                (String) request.getAttribute("error");
+                    (String) session.getAttribute(
+                            "error"
+                    );
 
             String success =
-                (String) request.getAttribute("success");
+                    (String) session.getAttribute(
+                            "success"
+                    );
         %>
 
         <% if(error != null){ %>
@@ -67,8 +71,18 @@
 
         <% } %>
 
+        <%
+            session.removeAttribute(
+                    "error"
+            );
+
+            session.removeAttribute(
+                    "success"
+            );
+        %>
+
         <form
-            action="${pageContext.request.contextPath}/register"
+            action="${pageContext.request.contextPath}/doRegister"
             method="post">
 
             <div class="mb-3">
