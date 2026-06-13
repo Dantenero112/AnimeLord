@@ -19,9 +19,9 @@ import jakarta.servlet.annotation.MultipartConfig;
  * @author Lenovo
  */
 @MultipartConfig(
-    fileSizeThreshold = 1024 * 1024,
-    maxFileSize = 20 * 1024 * 1024,
-    maxRequestSize = 50 * 1024 * 1024
+    fileSizeThreshold = 1024 * 1024 * 10,
+    maxFileSize = 1024L * 1024 * 1024 * 5,
+    maxRequestSize = 1024L * 1024 * 1024 * 6
 )
 
 public class FrontController extends HttpServlet {

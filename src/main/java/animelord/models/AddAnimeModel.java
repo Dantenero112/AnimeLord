@@ -2,6 +2,7 @@ package animelord.models;
 
 import animelord.dao.AnimeDAO;
 import animelord.entities.Anime;
+import animelord.dao.GenreDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,13 +13,24 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.UUID;
 
-public class AddAnimeModel implements Model {
+public class AddAnimeModel
+        implements Model {
 
     private static final String COVER_DIRECTORY =
-            "D:/AnimeLordStorage/anime/covers";
+            Paths.get(
+                    "D:",
+                    "AnimeLordStorage",
+                    "anime",
+                    "covers"
+            ).toString();
 
     private static final String BANNER_DIRECTORY =
-            "D:/AnimeLordStorage/anime/banners";
+            Paths.get(
+                    "D:",
+                    "AnimeLordStorage",
+                    "anime",
+                    "banners"
+            ).toString();
 
     private static final Set<String> ALLOWED_IMAGE_TYPES =
             Set.of(
@@ -58,8 +70,8 @@ public class AddAnimeModel implements Model {
                     );
 
             /*
-                Preserve form values
-             */
+                PRESERVE FORM VALUES
+            */
             request.setAttribute(
                     "title",
                     title
@@ -82,7 +94,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 IMAGE FILES
-             */
+            */
             Part coverPart =
                     request.getPart(
                             "coverImage"
@@ -95,7 +107,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 EMPTY FILE CHECK
-             */
+            */
             if (coverPart == null
                     || coverPart.getSize() == 0
                     || bannerPart == null
@@ -112,7 +124,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 CONTENT TYPE VALIDATION
-             */
+            */
             String coverContentType =
                     coverPart.getContentType();
 
@@ -135,7 +147,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 TITLE / SYNOPSIS VALIDATION
-             */
+            */
             if (title == null
                     || title.isBlank()
                     || synopsis == null
@@ -152,7 +164,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 RELEASE YEAR VALIDATION
-             */
+            */
             if (releaseYear < 1950
                     || releaseYear > 2100) {
 
@@ -167,15 +179,10 @@ public class AddAnimeModel implements Model {
 
             /*
                 CREATE DIRECTORIES
-             */
+            */
             File coverDir =
                     new File(
                             COVER_DIRECTORY
-                    );
-
-            File bannerDir =
-                    new File(
-                            BANNER_DIRECTORY
                     );
 
             if (!coverDir.exists()) {
@@ -183,6 +190,11 @@ public class AddAnimeModel implements Model {
                 coverDir.mkdirs();
 
             }
+
+            File bannerDir =
+                    new File(
+                            BANNER_DIRECTORY
+                    );
 
             if (!bannerDir.exists()) {
 
@@ -192,20 +204,24 @@ public class AddAnimeModel implements Model {
 
             /*
                 ORIGINAL FILENAMES
-             */
+            */
             String originalCoverName =
                     Paths.get(
                             coverPart.getSubmittedFileName()
-                    ).getFileName().toString();
+                    )
+                    .getFileName()
+                    .toString();
 
             String originalBannerName =
                     Paths.get(
                             bannerPart.getSubmittedFileName()
-                    ).getFileName().toString();
+                    )
+                    .getFileName()
+                    .toString();
 
             /*
                 UNIQUE FILENAMES
-             */
+            */
             String coverFileName =
                     UUID.randomUUID()
                     + "_"
@@ -218,20 +234,22 @@ public class AddAnimeModel implements Model {
 
             /*
                 FULL PATHS
-             */
+            */
             String coverFullPath =
-                    COVER_DIRECTORY
-                    + File.separator
-                    + coverFileName;
+                    Paths.get(
+                            COVER_DIRECTORY,
+                            coverFileName
+                    ).toString();
 
             String bannerFullPath =
-                    BANNER_DIRECTORY
-                    + File.separator
-                    + bannerFileName;
+                    Paths.get(
+                            BANNER_DIRECTORY,
+                            bannerFileName
+                    ).toString();
 
             /*
                 SAVE FILES
-             */
+            */
             coverPart.write(
                     coverFullPath
             );
@@ -242,7 +260,7 @@ public class AddAnimeModel implements Model {
 
             /*
                 CREATE ANIME
-             */
+            */
             Anime anime =
                     new Anime();
 
@@ -273,28 +291,75 @@ public class AddAnimeModel implements Model {
             );
 
             /*
+                SELECTED GENRES
+            */
+            String[] selectedGenres =
+                    request.getParameterValues(
+                            "genreIds"
+                    );
+
+            /*
                 SAVE TO DATABASE
-             */
+            */
             AnimeDAO animeDAO =
                     new AnimeDAO();
 
-            boolean success =
-                    animeDAO.addAnime(
+            int animeId =
+                    animeDAO.addAnimeAndGetId(
                             anime
                     );
 
-            if (success) {
+            if(animeId > 0){
+
+                /*
+                    SAVE GENRES
+                */
+                if(selectedGenres != null
+                        && selectedGenres.length > 0){
+
+                    int[] genreIds =
+                            new int[
+                                    selectedGenres.length
+                            ];
+
+                    for(int i = 0;
+                            i < selectedGenres.length;
+                            i++){
+
+                        genreIds[i] =
+                                Integer.parseInt(
+                                        selectedGenres[i]
+                                );
+
+                    }
+
+                    GenreDAO genreDAO =
+                            new GenreDAO();
+
+                    genreDAO.addAnimeGenres(
+                            animeId,
+                            genreIds
+                    );
+
+                }
+
+                request.getSession()
+                        .setAttribute(
+                                "successMessage",
+                                "Anime added successfully."
+                        );
 
                 response.sendRedirect(
                         request.getContextPath()
-                        + "/admin"
+                        + "/admin?view=manageAnime"
                 );
 
-            } else {
+            }
+            else{
 
                 /*
                     DELETE FILES
-                 */
+                */
                 new File(
                         coverFullPath
                 ).delete();
@@ -308,9 +373,11 @@ public class AddAnimeModel implements Model {
                         response,
                         "Failed to save anime."
                 );
+
             }
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
 
             e.printStackTrace();
 
@@ -319,13 +386,15 @@ public class AddAnimeModel implements Model {
                     response,
                     "An unexpected error occurred while adding anime."
             );
+
         }
+
     }
 
     /*
         RETURN TO ADMIN PANEL
-     */
-    private void showAddAnimePage(
+    */
+        private void showAddAnimePage(
             HttpServletRequest request,
             HttpServletResponse response,
             String errorMessage)
@@ -341,11 +410,21 @@ public class AddAnimeModel implements Model {
                 "addAnime"
         );
 
+        GenreDAO genreDAO =
+                new GenreDAO();
+
+        request.setAttribute(
+                "genreList",
+                genreDAO.getAllGenres()
+        );
+
         request.getRequestDispatcher(
                 "/WEB-INF/views/admin.jsp"
         ).forward(
                 request,
                 response
         );
+
     }
+
 }
