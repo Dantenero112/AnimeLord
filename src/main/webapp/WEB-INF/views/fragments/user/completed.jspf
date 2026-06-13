@@ -1,0 +1,78 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="completed-section">
+
+    <div class="section-header">
+
+        <a href="${pageContext.request.contextPath}/completed"
+           class="section-link">
+
+            ✅ Just Completed →
+
+        </a>
+
+    </div>
+
+    <div class="anime-grid-small">
+
+        <c:forEach items="${completedAnime}"
+                   var="anime">
+
+            <div class="anime-card">
+
+                <div class="anime-poster-wrapper">
+
+                    <img
+                        src="${pageContext.request.contextPath}${anime.coverImage}"
+                        alt="${anime.title}"
+                        class="anime-poster">
+
+                    <div class="anime-status">
+
+                        ${anime.status}
+
+                    </div>
+
+                </div>
+
+                <div class="anime-card-body">
+
+                    <h5 class="anime-title">
+
+                        ${anime.title}
+
+                    </h5>
+
+                    <div class="anime-meta">
+
+                        <span>
+
+                            ${anime.releaseYear}
+
+                        </span>
+
+                        <span>
+
+                            👁 ${anime.totalViews}
+
+                        </span>
+
+                    </div>
+
+                    <a href="${pageContext.request.contextPath}/anime?id=${anime.animeId}"
+                       class="anime-btn">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </c:forEach>
+
+    </div>
+
+</section>
