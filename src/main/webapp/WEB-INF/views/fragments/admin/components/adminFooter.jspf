@@ -1,0 +1,156 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<footer class="admin-footer">
+
+    <div class="admin-footer-content">
+
+        <!-- BRAND -->
+
+        <div class="admin-footer-brand">
+
+            <h4>
+
+                Anime<span>Lord</span>
+
+            </h4>
+
+            <p>
+
+                Administrative Control Panel for managing anime,
+                episodes, encoding jobs, reports, users and platform settings.
+
+            </p>
+
+        </div>
+
+        <!-- ADMIN NAVIGATION -->
+
+        <div class="admin-footer-section">
+
+            <h5>
+
+                Admin Navigation
+
+            </h5>
+
+            <ul>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=addAnime">
+                        Add Anime
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=manageAnime">
+                        Manage Anime
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=uploadEpisode">
+                        Upload Episode
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- SYSTEM -->
+
+        <div class="admin-footer-section">
+
+            <h5>
+
+                System
+
+            </h5>
+
+            <ul>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=encodingQueue">
+                        Encoding Queue
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=feedbackReports">
+                        Feedback Reports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/admin?view=brokenReports">
+                        Broken Reports
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- PUBLIC SITE -->
+
+        <div class="admin-footer-section">
+
+            <h5>
+
+                Public Website
+
+            </h5>
+
+            <ul>
+
+                <li>
+
+                    <a href="${pageContext.request.contextPath}/">
+
+                        🏠 Visit AnimeLord Homepage
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <div class="footer-bottom-left">
+
+            <strong>
+
+                AnimeLord Admin Panel
+
+            </strong>
+
+        </div>
+
+        <div class="footer-bottom-center">
+
+            © AnimeLord
+
+        </div>
+
+        <div class="footer-bottom-right">
+
+            Powered by JSP • Servlets • HLS
+
+        </div>
+
+    </div>
+
+</footer>
