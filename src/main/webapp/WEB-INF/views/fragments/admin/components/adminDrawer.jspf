@@ -1,0 +1,295 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<div id="overlay"
+     class="overlay"></div>
+
+<div id="sidebarDrawer"
+     class="sidebar-drawer">
+
+    <div class="drawer-header">
+
+        <div class="brand">
+
+            Anime<span>Lord</span>
+
+        </div>
+
+        <button id="closeBtn"
+                class="close-btn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <a href="${pageContext.request.contextPath}/admin"
+       class="nav-link-custom">
+
+        📊 Dashboard
+
+    </a>
+
+    <!-- ANIME MANAGEMENT -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            🎬 Anime Management
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=addAnime"
+               class="nav-link-custom">
+
+                🎞 Add Anime
+
+            </a>
+
+            <a href="${pageContext.request.contextPath}/admin?view=manageAnime"
+               class="nav-link-custom">
+
+                📚 Manage Anime
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- EPISODE MANAGEMENT -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            📺 Episode Management
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=uploadEpisode"
+               class="nav-link-custom">
+
+                🎥 Upload Episode
+
+            </a>
+
+            <a href="${pageContext.request.contextPath}/admin?view=manageEpisodes"
+               class="nav-link-custom">
+
+                🎞 Manage Episodes
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- STREAMING -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            ⚙️ Streaming
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/encodingQueue"
+               class="nav-link-custom">
+
+                🔄 Encoding Queue
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- REPORTS -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            📋 Reports
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=feedbackReports"
+               class="nav-link-custom">
+
+                📨 Feedback Reports
+
+            </a>
+
+            <a href="${pageContext.request.contextPath}/admin?view=brokenReports"
+               class="nav-link-custom">
+
+                🚨 Broken Episode Reports
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- USERS -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            👥 User Management
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=users"
+               class="nav-link-custom">
+
+                👤 Manage Users
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ANALYTICS -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            📈 Analytics
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=statistics"
+               class="nav-link-custom">
+
+                📊 Statistics
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- SYSTEM -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            🛠 System
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/admin?view=announcements"
+               class="nav-link-custom">
+
+                📢 Announcements
+
+            </a>
+
+            <a href="${pageContext.request.contextPath}/admin?view=settings"
+               class="nav-link-custom">
+
+                ⚙️ Settings
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ACCOUNT -->
+
+    <div class="drawer-group">
+
+        <div class="drawer-group-title">
+
+            👤 Account
+
+            <span class="drawer-arrow">
+
+                ▸
+
+            </span>
+
+        </div>
+
+        <div class="drawer-submenu">
+
+            <a href="${pageContext.request.contextPath}/logout"
+               class="nav-link-custom">
+
+                🚪 Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

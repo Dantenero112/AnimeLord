@@ -1,0 +1,18 @@
+<%@ page pageEncoding="UTF-8" %>
+<nav class="admin-navbar">
+
+    <button
+            id="menuBtn"
+            class="menu-btn">
+
+        ☰
+
+    </button>
+
+    <div class="navbar-brand-custom">
+
+        Anime<span>Lord</span>
+
+    </div>
+
+</nav>
