@@ -133,9 +133,7 @@
         max-width:240px;
     }
 
-    .anime-card img{
-        height:180px;
-    }
+    
 }
 /* ==========================================
    FOOTER RESPONSIVE
@@ -282,9 +280,7 @@
         max-width:220px;
     }
 
-    .anime-card img{
-        height:160px;
-    }
+    
 
     .card-body{
         padding:12px;
@@ -339,9 +335,7 @@
         max-width:200px;
     }
 
-    .anime-card img{
-        height:140px;
-    }
+    
 
     .section-title{
         font-size:1.2rem;
@@ -352,239 +346,288 @@
 /* ==========================================
    TRENDING HERO RESPONSIVE
 ========================================== */
-
-@media(max-width:991px){
-
-    .hero-banner,
-    .hero-image{
-        height:550px;
-    }
-
-    .hero-content{
-        padding-left:50px;
-
-        max-width:600px;
-    }
-
-    .hero-title{
-        font-size:3rem;
-    }
-
-}
+/* ==========================================
+   MOBILE PHONES
+========================================== */
 
 @media(max-width:768px){
 
-    .hero-banner,
-    .hero-image{
-        height:500px;
+    /* =====================================
+       HERO SIZE
+    ===================================== */
+
+    .hero-banner{
+
+        height:340px;
+
+        border-radius:18px;
     }
 
+    .hero-image{
+
+        width:100%;
+
+        height:100%;
+
+        object-fit:cover;
+
+        object-position:center center;
+    }
+
+    /* =====================================
+       OVERLAY
+    ===================================== */
+
     .hero-overlay{
+
         background:
             linear-gradient(
-                180deg,
-                rgba(2,6,23,.55),
-                rgba(2,6,23,.95)
+                90deg,
+                rgba(2,6,23,.92) 0%,
+                rgba(2,6,23,.78) 45%,
+                rgba(2,6,23,.35) 75%,
+                rgba(2,6,23,.10) 100%
             );
     }
 
-    .hero-content{
-        padding:25px;
+    /* =====================================
+       CONTENT AREA
+    ===================================== */
 
-        max-width:100%;
+    .hero-content{
+
+        width:68%;
+
+        max-width:68%;
+
+        padding:
+            18px
+            18px
+            18px
+            20px;
     }
+
+    /* =====================================
+       TRENDING TAG
+    ===================================== */
+
+    .hero-tag{
+
+        font-size:.68rem;
+
+        padding:5px 10px;
+
+        margin-bottom:10px;
+    }
+
+    /* =====================================
+       TITLE
+    ===================================== */
 
     .hero-title{
-        font-size:2.3rem;
-    }
 
-    .hero-synopsis{
-        font-size:1rem;
+        font-size:1.75rem;
+
+        line-height:1.15;
+
+        margin-bottom:10px;
 
         -webkit-line-clamp:3;
     }
 
+    /* =====================================
+       SYNOPSIS
+    ===================================== */
+
+    .hero-synopsis{
+
+        font-size:.82rem;
+
+        line-height:1.5;
+
+        margin-bottom:12px;
+
+        -webkit-line-clamp:2;
+    }
+
+    /* =====================================
+       META
+    ===================================== */
+
     .hero-meta{
-        gap:10px;
-    }
 
-}
+        gap:6px;
 
-@media(max-width:576px){
-
-    .hero-banner,
-    .hero-image{
-        height:450px;
-    }
-
-    .hero-title{
-        font-size:1.8rem;
-    }
-
-    .hero-tag{
-        font-size:.8rem;
+        margin-bottom:12px;
     }
 
     .hero-meta span{
-        font-size:.85rem;
 
-        padding:6px 12px;
+        padding:5px 8px;
+
+        font-size:.68rem;
+    }
+
+    /* =====================================
+       BUTTON
+    ===================================== */
+
+    .watch-btn{
+
+        padding:8px 14px;
+
+        font-size:.78rem;
+
+        border-radius:10px;
+    }
+
+    /* =====================================
+       RIGHT SIDE INDICATORS
+    ===================================== */
+
+    .anime-indicators{
+
+        position:absolute !important;
+
+        right:8px !important;
+
+        top:50% !important;
+
+        transform:translateY(-50%) !important;
+
+        left:auto !important;
+
+        bottom:auto !important;
+
+        margin:0 !important;
+
+        display:flex !important;
+
+        flex-direction:column !important;
+
+        gap:6px !important;
+
+        z-index:100;
+    }
+
+    .anime-indicators button{
+
+        width:7px !important;
+
+        height:7px !important;
+
+        min-width:7px !important;
+
+        min-height:7px !important;
+
+        border-radius:50% !important;
+
+        margin:0 !important;
+
+        background:
+            rgba(255,255,255,.35) !important;
+
+        opacity:1 !important;
+    }
+
+    .anime-indicators button.active{
+
+        width:7px !important;
+
+        height:7px !important;
+
+        background:#22d3ee !important;
+
+        box-shadow:
+            0 0 8px rgba(34,211,238,.55);
+    }
+
+    /* =====================================
+       HIDE ARROWS
+    ===================================== */
+
+    .carousel-control-prev,
+    .carousel-control-next{
+
+        display:none;
+    }
+}
+
+@media(max-width:400px){
+
+    .hero-banner{
+
+        height:300px;
+    }
+
+    .hero-content{
+
+        width:65%;
+
+        max-width:65%;
+    }
+
+    .hero-title{
+
+        font-size:1.45rem;
+    }
+
+    .hero-synopsis{
+
+        font-size:.76rem;
     }
 
     .watch-btn{
-        width:100%;
 
-        text-align:center;
+        padding:7px 12px;
+
+        font-size:.72rem;
+    }
+}
+@media(min-width:401px) and (max-width:480px){
+
+    .hero-banner{
+
+        height:340px;
     }
 
-}
-/* ==========================================
-   RECOMMENDED SECTION
-========================================== */
+    .hero-title{
 
-.recommended-section{
-    margin-bottom:70px;
+        font-size:1.85rem;
+    }
 }
 
-.anime-grid{
-    display:grid;
+@media(min-width:769px) and (max-width:991px){
 
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(240px,1fr)
-        );
+    .hero-banner{
 
-    gap:25px;
+        height:430px;
+    }
+
+    .hero-content{
+
+        width:60%;
+
+        max-width:60%;
+    }
+
+    .hero-title{
+
+        font-size:2.3rem;
+    }
+
+    .hero-synopsis{
+
+        -webkit-line-clamp:3;
+    }
 }
 
-.anime-card{
-    background:
-        rgba(15,23,42,.95);
+/*===========================
+    Trending Hero Section ends
+============================*/
 
-    border:
-        1px solid rgba(255,255,255,.06);
 
-    border-radius:18px;
-
-    overflow:hidden;
-
-    transition:.3s ease;
-
-    height:100%;
-}
-
-.anime-card:hover{
-    transform:translateY(-6px);
-
-    border-color:
-        rgba(34,211,238,.25);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.25);
-}
-
-.anime-poster-wrapper{
-    position:relative;
-}
-
-.anime-poster{
-    width:100%;
-
-    height:330px;
-
-    object-fit:cover;
-
-    display:block;
-}
-
-.anime-status{
-    position:absolute;
-
-    top:12px;
-
-    right:12px;
-
-    background:
-        rgba(2,6,23,.85);
-
-    color:#22d3ee;
-
-    padding:6px 12px;
-
-    border-radius:999px;
-
-    font-size:.8rem;
-
-    font-weight:600;
-}
-
-.anime-card-body{
-    padding:18px;
-}
-
-.anime-title{
-    color:#ffffff;
-
-    font-size:1.05rem;
-
-    font-weight:600;
-
-    margin-bottom:12px;
-
-    min-height:48px;
-
-    display:-webkit-box;
-
-    -webkit-line-clamp:2;
-
-    -webkit-box-orient:vertical;
-
-    overflow:hidden;
-}
-
-.anime-meta{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    color:#94a3b8;
-
-    font-size:.9rem;
-
-    margin-bottom:16px;
-}
-
-.anime-btn{
-    display:block;
-
-    width:100%;
-
-    text-align:center;
-
-    text-decoration:none;
-
-    padding:10px;
-
-    border-radius:10px;
-
-    background:#22d3ee;
-
-    color:#02111f;
-
-    font-weight:700;
-
-    transition:.3s ease;
-}
-
-.anime-btn:hover{
-    background:#67e8f9;
-
-    color:#02111f;
-}
-
+/*Episode*/
 @media(max-width:768px){
 
     .episode-grid{
@@ -822,6 +865,110 @@
         width:100%;
 
         min-width:unset;
+    }
+
+}
+
+/*ANIME CARDS STYLE (START)*/
+
+@media (max-width:1200px){
+
+    .anime-grid,
+    .anime-grid-small{
+
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                minmax(200px,1fr)
+            );
+    }
+}
+
+/* ==========================================
+   MOBILE ANIME CARDS
+========================================== */
+
+@media (max-width:768px){
+
+    .anime-grid,
+    .anime-grid-small{
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:12px;
+    }
+
+    .anime-card{
+
+        min-width:0;
+    }
+
+    .anime-poster-wrapper{
+
+        aspect-ratio:2 / 3;
+    }
+
+    .anime-card-body{
+
+        padding:10px;
+    }
+
+    .anime-title{
+
+        font-size:.9rem;
+
+        line-height:1.3;
+
+        height:2.6em;
+
+        margin-bottom:10px;
+    }
+
+    .anime-meta{
+
+        font-size:.75rem;
+
+        margin-bottom:10px;
+    }
+
+    .anime-btn{
+
+        padding:8px;
+
+        font-size:.85rem;
+    }
+
+    .anime-status{
+
+        font-size:.65rem;
+
+        padding:5px 10px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .anime-grid,
+    .anime-grid-small{
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:10px;
+    }
+
+    .anime-title{
+
+        font-size:.85rem;
+    }
+
+    .anime-btn{
+
+        font-size:.8rem;
+
+        padding:7px;
     }
 
 }
