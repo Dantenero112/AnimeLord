@@ -1,6 +1,8 @@
 package animelord.models;
 
 import animelord.dao.AnimeDAO;
+import animelord.dao.GenreDAO;
+
 import animelord.entities.Anime;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,10 +18,26 @@ public class UpdateAnimeModel
         implements Model {
 
     private static final String COVER_DIRECTORY =
-            "D:/AnimeLordStorage/anime/covers";
+            Paths.get(
+                    "D:",
+                    "AnimeLordStorage",
+                    "anime",
+                    "covers"
+            ).toString();
 
     private static final String BANNER_DIRECTORY =
-            "D:/AnimeLordStorage/anime/banners";
+            Paths.get(
+                    "D:",
+                    "AnimeLordStorage",
+                    "anime",
+                    "banners"
+            ).toString();
+
+    private static final String STORAGE_ROOT =
+            Paths.get(
+                    "D:",
+                    "AnimeLordStorage"
+            ).toString();
 
     private static final Set<String> ALLOWED_IMAGE_TYPES =
             Set.of(
@@ -65,8 +83,16 @@ public class UpdateAnimeModel
                             )
                     );
 
+            String[] selectedGenres =
+                    request.getParameterValues(
+                            "genreIds"
+                    );
+
             AnimeDAO animeDAO =
                     new AnimeDAO();
+
+            GenreDAO genreDAO =
+                    new GenreDAO();
 
             Anime anime =
                     animeDAO.getAnimeById(
@@ -74,6 +100,12 @@ public class UpdateAnimeModel
                     );
 
             if(anime == null){
+
+                request.getSession()
+                        .setAttribute(
+                                "errorMessage",
+                                "Anime not found."
+                        );
 
                 response.sendRedirect(
                         request.getContextPath()
@@ -84,9 +116,8 @@ public class UpdateAnimeModel
             }
 
             /*
-                BASIC VALIDATION
+                VALIDATION
             */
-
             if(title == null
                     || title.isBlank()
                     || synopsis == null
@@ -102,6 +133,16 @@ public class UpdateAnimeModel
                         anime
                 );
 
+                request.setAttribute(
+                        "genreList",
+                        genreDAO.getAllGenres()
+                );
+
+                request.setAttribute(
+                        "view",
+                        "editAnime"
+                );
+
                 request.getRequestDispatcher(
                         "/WEB-INF/views/admin.jsp"
                 ).forward(
@@ -113,9 +154,17 @@ public class UpdateAnimeModel
             }
 
             /*
-                IMAGE FILES
+                OLD FILES
             */
+            String oldCover =
+                    anime.getCoverImage();
 
+            String oldBanner =
+                    anime.getBannerImage();
+
+            /*
+                IMAGE PARTS
+            */
             Part coverPart =
                     request.getPart(
                             "coverImage"
@@ -129,7 +178,6 @@ public class UpdateAnimeModel
             /*
                 COVER UPDATE
             */
-
             if(coverPart != null
                     && coverPart.getSize() > 0){
 
@@ -137,11 +185,13 @@ public class UpdateAnimeModel
                         coverPart.getContentType();
 
                 if(!ALLOWED_IMAGE_TYPES.contains(
-                        contentType)){
+                        contentType
+                )){
 
                     throw new Exception(
-                            "Invalid cover image type."
+                            "Invalid cover image."
                     );
+
                 }
 
                 String fileName =
@@ -149,12 +199,15 @@ public class UpdateAnimeModel
                         + "_"
                         + Paths.get(
                                 coverPart.getSubmittedFileName()
-                        ).getFileName();
+                        )
+                        .getFileName()
+                        .toString();
 
                 String fullPath =
-                        COVER_DIRECTORY
-                        + File.separator
-                        + fileName;
+                        Paths.get(
+                                COVER_DIRECTORY,
+                                fileName
+                        ).toString();
 
                 coverPart.write(
                         fullPath
@@ -164,12 +217,36 @@ public class UpdateAnimeModel
                         "/anime/covers/"
                         + fileName
                 );
+
+                /*
+                    DELETE OLD COVER
+                */
+                if(oldCover != null
+                        && !oldCover.isBlank()){
+
+                    File oldFile =
+                            Paths.get(
+                                    STORAGE_ROOT,
+                                    oldCover.replaceFirst(
+                                            "^/",
+                                            ""
+                                    )
+                            )
+                            .toFile();
+
+                    if(oldFile.exists()){
+
+                        oldFile.delete();
+
+                    }
+
+                }
+
             }
 
             /*
                 BANNER UPDATE
             */
-
             if(bannerPart != null
                     && bannerPart.getSize() > 0){
 
@@ -177,11 +254,13 @@ public class UpdateAnimeModel
                         bannerPart.getContentType();
 
                 if(!ALLOWED_IMAGE_TYPES.contains(
-                        contentType)){
+                        contentType
+                )){
 
                     throw new Exception(
-                            "Invalid banner image type."
+                            "Invalid banner image."
                     );
+
                 }
 
                 String fileName =
@@ -189,12 +268,15 @@ public class UpdateAnimeModel
                         + "_"
                         + Paths.get(
                                 bannerPart.getSubmittedFileName()
-                        ).getFileName();
+                        )
+                        .getFileName()
+                        .toString();
 
                 String fullPath =
-                        BANNER_DIRECTORY
-                        + File.separator
-                        + fileName;
+                        Paths.get(
+                                BANNER_DIRECTORY,
+                                fileName
+                        ).toString();
 
                 bannerPart.write(
                         fullPath
@@ -204,12 +286,36 @@ public class UpdateAnimeModel
                         "/anime/banners/"
                         + fileName
                 );
+
+                /*
+                    DELETE OLD BANNER
+                */
+                if(oldBanner != null
+                        && !oldBanner.isBlank()){
+
+                    File oldFile =
+                            Paths.get(
+                                    STORAGE_ROOT,
+                                    oldBanner.replaceFirst(
+                                            "^/",
+                                            ""
+                                    )
+                            )
+                            .toFile();
+
+                    if(oldFile.exists()){
+
+                        oldFile.delete();
+
+                    }
+
+                }
+
             }
 
             /*
                 UPDATE FIELDS
             */
-
             anime.setTitle(
                     title
             );
@@ -227,38 +333,83 @@ public class UpdateAnimeModel
             );
 
             /*
-                SAVE UPDATE
+                UPDATE ANIME
             */
-
             boolean success =
                     animeDAO.updateAnime(
                             anime
                     );
 
-            if(success){
-
-                response.sendRedirect(
-                        request.getContextPath()
-                        + "/admin?view=manageAnime"
-                );
-
-            }
-            else{
+            if(!success){
 
                 throw new Exception(
                         "Failed to update anime."
                 );
+
             }
+
+            /*
+                UPDATE GENRES
+            */
+            genreDAO.deleteAnimeGenres(
+                    animeId
+            );
+
+            if(selectedGenres != null
+                    && selectedGenres.length > 0){
+
+                int[] genreIds =
+                        new int[
+                                selectedGenres.length
+                        ];
+
+                for(int i = 0;
+                        i < selectedGenres.length;
+                        i++){
+
+                    genreIds[i] =
+                            Integer.parseInt(
+                                    selectedGenres[i]
+                            );
+
+                }
+
+                genreDAO.addAnimeGenres(
+                        animeId,
+                        genreIds
+                );
+
+            }
+
+            request.getSession()
+                    .setAttribute(
+                            "successMessage",
+                            "Anime updated successfully."
+                    );
+
+            response.sendRedirect(
+                    request.getContextPath()
+                    + "/admin?view=manageAnime"
+            );
 
         }
         catch(Exception e){
 
             e.printStackTrace();
 
+            request.getSession()
+                    .setAttribute(
+                            "errorMessage",
+                            "Failed to update anime."
+                    );
+
             response.sendRedirect(
                     request.getContextPath()
                     + "/admin?view=manageAnime"
             );
+
         }
+
     }
+
 }
