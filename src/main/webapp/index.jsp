@@ -57,6 +57,7 @@
     <%@ include file="/WEB-INF/views/fragments/common/scripts.jspf" %>
 
     <script src="${pageContext.request.contextPath}/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/js/search.js"></script>
 
 </body>
 
