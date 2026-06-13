@@ -1,13 +1,15 @@
 package animelord.entities;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Anime {
 
     private int animeId;
 
     private String title;
-
+    
     private String synopsis;
 
     private String coverImage;
@@ -21,6 +23,12 @@ public class Anime {
     private long totalViews;
 
     private Timestamp createdAt;
+
+    /*
+        GENRES
+    */
+    private List<Genre> genres =
+            new ArrayList<>();
 
     /*
         DEFAULT CONSTRUCTOR
@@ -40,7 +48,8 @@ public class Anime {
             int releaseYear,
             String status,
             long totalViews,
-            Timestamp createdAt) {
+            Timestamp createdAt,
+            List<Genre> genres) {
 
         this.animeId = animeId;
         this.title = title;
@@ -51,6 +60,7 @@ public class Anime {
         this.status = status;
         this.totalViews = totalViews;
         this.createdAt = createdAt;
+        this.genres = genres;
     }
 
     /*
@@ -61,7 +71,9 @@ public class Anime {
         return animeId;
     }
 
-    public void setAnimeId(int animeId) {
+    public void setAnimeId(
+            int animeId) {
+
         this.animeId = animeId;
     }
 
@@ -69,7 +81,9 @@ public class Anime {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(
+            String title) {
+
         this.title = title;
     }
 
@@ -77,7 +91,9 @@ public class Anime {
         return synopsis;
     }
 
-    public void setSynopsis(String synopsis) {
+    public void setSynopsis(
+            String synopsis) {
+
         this.synopsis = synopsis;
     }
 
@@ -85,7 +101,9 @@ public class Anime {
         return coverImage;
     }
 
-    public void setCoverImage(String coverImage) {
+    public void setCoverImage(
+            String coverImage) {
+
         this.coverImage = coverImage;
     }
 
@@ -93,7 +111,9 @@ public class Anime {
         return bannerImage;
     }
 
-    public void setBannerImage(String bannerImage) {
+    public void setBannerImage(
+            String bannerImage) {
+
         this.bannerImage = bannerImage;
     }
 
@@ -101,7 +121,9 @@ public class Anime {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(
+            int releaseYear) {
+
         this.releaseYear = releaseYear;
     }
 
@@ -109,7 +131,9 @@ public class Anime {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(
+            String status) {
+
         this.status = status;
     }
 
@@ -117,7 +141,9 @@ public class Anime {
         return totalViews;
     }
 
-    public void setTotalViews(long totalViews) {
+    public void setTotalViews(
+            long totalViews) {
+
         this.totalViews = totalViews;
     }
 
@@ -125,8 +151,42 @@ public class Anime {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(
+            Timestamp createdAt) {
+
         this.createdAt = createdAt;
+    }
+
+    /*
+        GENRES
+    */
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(
+            List<Genre> genres) {
+
+        this.genres = genres;
+    }
+
+    /*
+        ADD SINGLE GENRE
+    */
+    public void addGenre(
+            Genre genre) {
+
+        if(this.genres == null){
+
+            this.genres =
+                    new ArrayList<>();
+
+        }
+
+        this.genres.add(
+                genre
+        );
     }
 
     @Override
@@ -142,6 +202,8 @@ public class Anime {
                 + ", status='" + status + '\''
                 + ", totalViews=" + totalViews
                 + ", createdAt=" + createdAt
+                + ", genres=" + genres
                 + '}';
     }
+
 }
