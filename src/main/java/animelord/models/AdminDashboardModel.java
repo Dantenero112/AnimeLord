@@ -2,7 +2,7 @@ package animelord.models;
 
 import animelord.dao.AnimeDAO;
 import animelord.dao.EpisodeDAO;
-
+import animelord.dao.GenreDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +21,8 @@ public class AdminDashboardModel
 
         EpisodeDAO episodeDAO =
                 new EpisodeDAO();
-
+        
+        GenreDAO genreDAO = new GenreDAO();
         /*
             DASHBOARD STATISTICS
         */
@@ -70,20 +71,59 @@ public class AdminDashboardModel
                 "view",
                 view
         );
+        
+        /*
+            ADD ANIME PAGE
+        */
+        if("addAnime".equals(view)){
+
+            request.setAttribute(
+                    "genreList",
+                    genreDAO.getAllGenres()
+            );
+
+        }
+        
         // Manage Anime
         if("manageAnime".equals(view)){
 
-        request.setAttribute(
-            "animeList",
-            animeDAO.getAllAnime()
+            String search =
+                    request.getParameter(
+                            "search"
+                    );
+
+        if(search != null
+                && !search.isBlank()){
+
+            request.setAttribute(
+                    "animeList",
+                    animeDAO.searchAnime(
+                            search
+                    )
             );
+
         }
-        //Edit Anime
+        else{
+
+            request.setAttribute(
+                    "animeList",
+                    animeDAO.getAllAnime()
+            );
+
+        }
+    }
+        /*
+            EDIT ANIME
+        */
         if("editAnime".equals(view)){
+
             try{
+
                 int animeId =
                         Integer.parseInt(
-                                request.getParameter("id")
+                                request.getParameter(
+                                        "id"
+                                )
                         );
 
                 request.setAttribute(
@@ -93,15 +133,128 @@ public class AdminDashboardModel
                         )
                 );
 
+                request.setAttribute(
+                        "genreList",
+                        genreDAO.getAllGenres()
+                );
+
             }
             catch(Exception e){
 
                 view = "manageAnime";
 
+                request.setAttribute(
+                        "view",
+                        view
+                );
+
             }
 
         }
+        
+        //Upload Episode
+        if("uploadEpisode".equals(view)){
+
+            request.setAttribute(
+                    "animeList",
+                    animeDAO.getAllAnime()
+            );
+
+        }
+        //Manage Episode
+        if("manageEpisodes".equals(view)){
+
+        request.setAttribute(
+                "animeList",
+                animeDAO.getAllAnime()
+        );
+
+        String search =
+                request.getParameter(
+                        "search"
+                );
+
+        String animeIdParam =
+                request.getParameter(
+                        "animeId"
+                );
+
         /*
+            SEARCH
+        */
+        if(search != null
+                && !search.isBlank()){
+
+            request.setAttribute(
+                    "episodeList",
+                    episodeDAO.searchEpisodes(
+                            search
+                    )
+            );
+
+        }
+
+        /*
+            FILTER BY ANIME
+        */
+        else if(animeIdParam != null
+                && !animeIdParam.isBlank()){
+
+            int animeId =
+                    Integer.parseInt(
+                            animeIdParam
+                    );
+
+            request.setAttribute(
+                    "episodeList",
+                    episodeDAO.getEpisodesByAnime(
+                            animeId
+                    )
+            );
+
+        }
+
+        /*
+            SHOW ALL
+        */
+        else{
+
+            request.setAttribute(
+                    "episodeList",
+                    episodeDAO.getAllEpisodes()
+            );
+
+        }
+    }
+        //Edit Episode
+        if("editEpisode".equals(view)){
+        try{
+
+            int episodeId =
+                    Integer.parseInt(
+                            request.getParameter("id")
+                    );
+
+            request.setAttribute(
+                    "episode",
+                    episodeDAO.getEpisodeById(
+                            episodeId
+                    )
+            );
+
+        }
+        catch(Exception e){
+
+            view = "manageEpisodes";
+
+            request.setAttribute(
+                    "view",
+                    view
+            );
+        }
+
+    }
+                /*
             FORWARD TO ADMIN PAGE
         */
         RequestDispatcher rd =

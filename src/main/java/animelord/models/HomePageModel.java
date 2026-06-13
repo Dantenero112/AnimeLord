@@ -12,7 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePageModel implements Model {
+public class HomePageModel
+        implements Model {
 
     @Override
     public void businessLogic(
@@ -36,7 +37,7 @@ public class HomePageModel implements Model {
             RECOMMENDED
         */
         List<Anime> recommendedAnime =
-                animeDAO.getTopAnime(12);
+                animeDAO.getTopAnime(6);
 
         /*
             RECENTLY ADDED EPISODES
@@ -48,19 +49,19 @@ public class HomePageModel implements Model {
             NEWLY RELEASED
         */
         List<Anime> newReleases =
-                animeDAO.getNewlyReleasedAnime(4);
+                animeDAO.getNewlyReleasedAnime(6);
 
         /*
             UPCOMING
         */
         List<Anime> upcomingAnime =
-                animeDAO.getUpcomingAnime(4);
+                animeDAO.getUpcomingAnime(6);
 
         /*
             COMPLETED
         */
         List<Anime> completedAnime =
-                animeDAO.getRecentlyCompletedAnime(4);
+                animeDAO.getRecentlyCompletedAnime(6);
 
         /*
             NULL SAFETY
@@ -108,9 +109,8 @@ public class HomePageModel implements Model {
         }
 
         /*
-            REQUEST ATTRIBUTES
+            HOMEPAGE DATA
         */
-
         request.setAttribute(
                 "trendingAnime",
                 trendingAnime
@@ -140,11 +140,10 @@ public class HomePageModel implements Model {
                 "completedAnime",
                 completedAnime
         );
-        
+
         /*
             PLATFORM STATS
         */
-
         request.setAttribute(
                 "animeCount",
                 animeDAO.getAnimeCount()
@@ -154,18 +153,15 @@ public class HomePageModel implements Model {
                 "episodeCount",
                 episodeDAO.getEpisodeCount()
         );
-        
+
         /*
             FORWARD TO HOMEPAGE
         */
-
         request.getRequestDispatcher(
                 "/index.jsp"
         ).forward(
                 request,
                 response
         );
-
     }
-
 }
