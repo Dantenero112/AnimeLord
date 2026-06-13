@@ -24,7 +24,7 @@
                 <div class="episode-thumbnail-wrapper">
 
                     <img
-                        src="${episode.thumbnailPath}"
+                        src="${pageContext.request.contextPath}${episode.thumbnailPath}"
                         alt="${episode.animeTitle}"
                         class="episode-thumbnail">
 

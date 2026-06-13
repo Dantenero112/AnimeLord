@@ -1,7 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%
-String username = (String)session.getAttribute("username");
+String username =
+        (String) session.getAttribute(
+                "username"
+        );
+
+String role =
+        (String) session.getAttribute(
+                "role"
+        );
 %>
 
 <% if(username == null){ %>
@@ -22,28 +30,72 @@ String username = (String)session.getAttribute("username");
             data-bs-toggle="dropdown">
 
             <i class="bi bi-person-circle"></i>
+
             <%= username %>
 
         </button>
 
         <ul class="dropdown-menu dropdown-menu-end">
 
+            <!-- PROFILE -->
+
             <li>
-                <a class="dropdown-item"
-                   href="${pageContext.request.contextPath}/profile">
+
+                <a
+                    class="dropdown-item"
+                    href="${pageContext.request.contextPath}/profile">
+
+                    <i class="bi bi-person"></i>
 
                     Profile
 
                 </a>
+
             </li>
 
+            <!-- ADMIN PANEL -->
+
+            <% if(role != null
+                    && role.equalsIgnoreCase(
+                            "ADMIN"
+                    )){ %>
+
+                <li>
+
+                    <a
+                        class="dropdown-item"
+                        href="${pageContext.request.contextPath}/admin">
+
+                        <i class="bi bi-speedometer2"></i>
+
+                        Admin Panel
+
+                    </a>
+
+                </li>
+
+            <% } %>
+
             <li>
+
                 <hr class="dropdown-divider">
+
             </li>
 
+            <!-- LOGOUT -->
+
             <li>
-                <a class="dropdown-item"
-                    href="${pageContext.request.contextPath}/logout"> Logout </a>
+
+                <a
+                    class="dropdown-item text-danger"
+                    href="${pageContext.request.contextPath}/logout">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </a>
+
             </li>
 
         </ul>
