@@ -1,0 +1,380 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="admin-section">
+
+    <div class="admin-section-header">
+
+        <h2>
+
+            ✏ Edit Anime
+
+        </h2>
+
+        <p>
+
+            Update anime information, genres and artwork.
+
+        </p>
+
+    </div>
+
+    <c:if test="${anime == null}">
+
+        <div class="glass-card">
+
+            <h5>
+
+                Anime not found.
+
+            </h5>
+
+            <a
+                href="${pageContext.request.contextPath}/admin?view=manageAnime"
+                class="btn-neon">
+
+                ← Back to Manage Anime
+
+            </a>
+
+        </div>
+
+    </c:if>
+
+    <c:if test="${anime != null}">
+
+        <div class="admin-card">
+
+            <form
+                action="${pageContext.request.contextPath}/updateAnime"
+                method="post"
+                enctype="multipart/form-data"
+                class="admin-form">
+
+                <!-- ANIME ID -->
+
+                <input
+                    type="hidden"
+                    name="animeId"
+                    value="${anime.animeId}">
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+
+                        Anime Title
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="${anime.title}"
+                        required>
+
+                </div>
+
+                <!-- SYNOPSIS -->
+
+                <div class="form-group">
+
+                    <label for="synopsis">
+
+                        Synopsis
+
+                    </label>
+
+                    <textarea
+                        id="synopsis"
+                        name="synopsis"
+                        rows="6"
+                        required>${anime.synopsis}</textarea>
+
+                </div>
+
+                <!-- CURRENT COVER -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Current Cover Image
+
+                    </label>
+
+                    <img
+                        src="${pageContext.request.contextPath}${anime.coverImage}"
+                        alt="${anime.title}"
+                        style="
+                            width:180px;
+                            border-radius:12px;
+                            border:1px solid rgba(255,255,255,.08);
+                        ">
+
+                </div>
+
+                <!-- REPLACE COVER -->
+
+                <div class="form-group">
+
+                    <label for="coverImage">
+
+                        Replace Cover Image
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="coverImage"
+                        name="coverImage"
+                        accept=".jpg,.jpeg,.png,.webp">
+
+                    <small>
+
+                        Leave empty to keep current cover image.
+
+                    </small>
+
+                </div>
+
+                <!-- CURRENT BANNER -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Current Banner Image
+
+                    </label>
+
+                    <img
+                        src="${pageContext.request.contextPath}${anime.bannerImage}"
+                        alt="${anime.title}"
+                        style="
+                            width:100%;
+                            max-width:500px;
+                            border-radius:12px;
+                            border:1px solid rgba(255,255,255,.08);
+                        ">
+
+                </div>
+
+                <!-- REPLACE BANNER -->
+
+                <div class="form-group">
+
+                    <label for="bannerImage">
+
+                        Replace Banner Image
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="bannerImage"
+                        name="bannerImage"
+                        accept=".jpg,.jpeg,.png,.webp">
+
+                    <small>
+
+                        Leave empty to keep current banner image.
+
+                    </small>
+
+                </div>
+
+                <!-- RELEASE YEAR -->
+
+                <div class="form-group">
+
+                    <label for="releaseYear">
+
+                        Release Year
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="releaseYear"
+                        name="releaseYear"
+                        value="${anime.releaseYear}"
+                        min="1950"
+                        max="2100"
+                        required>
+
+                </div>
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="status">
+
+                        Status
+
+                    </label>
+
+                    <select
+                        id="status"
+                        name="status"
+                        required>
+
+                        <option
+                            value="ONGOING"
+                            ${anime.status == 'ONGOING' ? 'selected' : ''}>
+
+                            ONGOING
+
+                        </option>
+
+                        <option
+                            value="COMPLETED"
+                            ${anime.status == 'COMPLETED' ? 'selected' : ''}>
+
+                            COMPLETED
+
+                        </option>
+
+                        <option
+                            value="UPCOMING"
+                            ${anime.status == 'UPCOMING' ? 'selected' : ''}>
+
+                            UPCOMING
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- GENRES -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Genres
+
+                    </label>
+
+                    <div class="genre-selector">
+
+                        <!-- SELECTED CHIPS -->
+
+                        <div
+                            id="selectedGenres"
+                            class="selected-genres">
+
+                            <c:forEach
+                                items="${anime.genres}"
+                                var="genre">
+
+                                <div
+                                    class="genre-chip"
+                                    data-id="${genre.genreId}">
+
+                                    <span>
+
+                                        ${genre.genreName}
+
+                                    </span>
+
+                                    <span
+                                        class="genre-chip-remove">
+
+                                        ✕
+
+                                    </span>
+
+                                </div>
+
+                            </c:forEach>
+
+                        </div>
+
+                        <!-- SEARCH -->
+
+                        <input
+                            type="text"
+                            id="genreSearch"
+                            class="genre-search-input"
+                            placeholder="Search and select genres...">
+
+                        <!-- DROPDOWN -->
+
+                        <div
+                            id="genreDropdown"
+                            class="genre-dropdown">
+
+                            <c:forEach
+                                items="${genreList}"
+                                var="genre">
+
+                                <div
+                                    class="genre-option"
+                                    data-id="${genre.genreId}"
+                                    data-name="${genre.genreName}">
+
+                                    ${genre.genreName}
+
+                                </div>
+
+                            </c:forEach>
+
+                        </div>
+
+                        <!-- HIDDEN INPUTS -->
+
+                        <div
+                            id="genreHiddenInputs">
+
+                            <c:forEach
+                                items="${anime.genres}"
+                                var="genre">
+
+                                <input
+                                    type="hidden"
+                                    name="genreIds"
+                                    value="${genre.genreId}"
+                                    data-genre-id="${genre.genreId}">
+
+                            </c:forEach>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="btn-admin-primary">
+
+                        💾 Update Anime
+
+                    </button>
+
+                    <a
+                        href="${pageContext.request.contextPath}/admin?view=manageAnime"
+                        class="btn-admin-secondary">
+
+                        ← Back
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </c:if>
+
+</section>
