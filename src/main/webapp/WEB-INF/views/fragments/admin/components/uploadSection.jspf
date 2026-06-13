@@ -1,0 +1,48 @@
+<%@ page pageEncoding="UTF-8" %>
+<div
+        id="upload"
+        class="glass-card">
+
+    <h5 class="mb-3">
+
+        📤 Upload Episode
+
+    </h5>
+
+    <div class="row g-3">
+
+        <div class="col-12 col-md-5">
+
+            <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Anime Title">
+
+        </div>
+
+        <div class="col-12 col-md-2">
+
+            <input
+                    class="form-control"
+                    type="number"
+                    placeholder="Episode">
+
+        </div>
+
+        <div class="col-12 col-md-5">
+
+            <input
+                    class="form-control"
+                    type="file">
+
+        </div>
+
+    </div>
+
+    <button class="btn btn-neon mt-3">
+
+        Upload
+
+    </button>
+
+</div>
