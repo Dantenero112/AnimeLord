@@ -1,6 +1,7 @@
-<%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<div id="overlay" class="overlay"></div>
+
+<div id="overlay"
+     class="overlay"></div>
 
 <div id="userDrawer"
      class="user-drawer">
@@ -25,59 +26,128 @@
 
     <nav class="drawer-nav">
 
+        <!-- HOME -->
+
         <a href="${pageContext.request.contextPath}/"
            class="drawer-link">
 
             <i class="bi bi-house"></i>
+
             Home
 
         </a>
 
-        <a href="#"
+        <!-- BROWSE ANIME -->
+
+        <a href="${pageContext.request.contextPath}/anime"
            class="drawer-link">
 
             <i class="bi bi-collection-play"></i>
-            Anime
+
+            Browse Anime
 
         </a>
 
-        <a href="#"
+        <!-- GENRES -->
+
+        <a href="${pageContext.request.contextPath}/genres"
            class="drawer-link">
 
             <i class="bi bi-tags"></i>
+
             Genres
 
         </a>
 
-        <a href="#"
+        <!-- TRENDING -->
+
+        <a href="${pageContext.request.contextPath}/trending"
            class="drawer-link">
 
-            <i class="bi bi-broadcast"></i>
-            Ongoing
+            <i class="bi bi-fire"></i>
+
+            Trending
 
         </a>
 
-        <a href="#"
+        <!-- ONGOING -->
+
+        <a href="${pageContext.request.contextPath}/ongoing"
+           class="drawer-link">
+
+            <i class="bi bi-broadcast"></i>
+
+            Ongoing Anime
+
+        </a>
+
+        <!-- RECENTLY ADDED -->
+
+        <a href="${pageContext.request.contextPath}/recent"
            class="drawer-link">
 
             <i class="bi bi-clock-history"></i>
+
             Recently Added
 
         </a>
 
-        <a href="#"
+        <!-- NEW RELEASES -->
+
+        <a href="${pageContext.request.contextPath}/new-releases"
            class="drawer-link">
 
-            <i class="bi bi-envelope-paper"></i>
-            Request Anime
+            <i class="bi bi-stars"></i>
+
+            New Releases
 
         </a>
 
-        <a href="#"
+        <!-- COMPLETED -->
+
+        <a href="${pageContext.request.contextPath}/completed"
            class="drawer-link">
 
-            <i class="bi bi-chat-left-text"></i>
-            Contact
+            <i class="bi bi-check-circle"></i>
+
+            Completed Anime
+
+        </a>
+
+        <!-- UPCOMING -->
+
+        <a href="${pageContext.request.contextPath}/upcoming"
+           class="drawer-link">
+
+            <i class="bi bi-rocket-takeoff"></i>
+
+            Upcoming Anime
+
+        </a>
+
+        <!-- USER FEATURES -->
+
+        <hr class="drawer-divider">
+
+        <!-- WATCHLIST -->
+
+        <a href="${pageContext.request.contextPath}/watchlist"
+           class="drawer-link">
+
+            <i class="bi bi-bookmark-heart"></i>
+
+            My Watchlist
+
+        </a>
+
+        <!-- WATCH HISTORY -->
+
+        <a href="${pageContext.request.contextPath}/history"
+           class="drawer-link">
+
+            <i class="bi bi-clock"></i>
+
+            Watch History
 
         </a>
 

@@ -724,3 +724,466 @@ input[type="file"]{
 
     white-space:nowrap;
 }
+/*Drop down color*/
+.form-select{
+
+    background:#02112b;
+
+    color:#ffffff;
+
+    border:1px solid #11d9ff;
+
+    min-width:220px;
+
+}
+
+.form-select:focus{
+
+    border-color:#11d9ff;
+
+    box-shadow:0 0 10px rgba(17,217,255,.4);
+
+}
+
+.form-select option{
+
+    background:#02112b;
+
+    color:#ffffff;
+
+}
+/*Encoding queu*/
+.status-failed{
+
+    background:#ff4d4d;
+
+    color:white;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   GENRE SELECTOR
+========================================== */
+
+.genre-selector{
+    position:relative;
+
+    width:100%;
+}
+
+/*
+==========================================
+SELECTED GENRES
+==========================================
+*/
+
+.selected-genres{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:12px;
+}
+
+.genre-chip{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #06b6d4,
+            #0891b2
+        );
+
+    color:#ffffff;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    box-shadow:
+        0 0 10px rgba(
+            34,
+            211,
+            238,
+            .25
+        );
+
+    transition:.2s;
+}
+
+.genre-chip:hover{
+    transform:
+        translateY(-1px);
+}
+
+.genre-chip-remove{
+    cursor:pointer;
+
+    font-size:.8rem;
+
+    opacity:.8;
+
+    transition:.2s;
+}
+
+.genre-chip-remove:hover{
+    opacity:1;
+
+    transform:
+        scale(1.15);
+}
+
+/*
+==========================================
+SEARCH INPUT
+==========================================
+*/
+
+.genre-search-input{
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .04
+        );
+
+    color:#ffffff;
+
+    transition:.25s;
+}
+
+.genre-search-input::placeholder{
+    color:#94a3b8;
+}
+
+.genre-search-input:focus{
+    outline:none;
+
+    border-color:#22d3ee;
+
+    box-shadow:
+        0 0 0 3px rgba(
+            34,
+            211,
+            238,
+            .15
+        );
+}
+
+/*
+==========================================
+DROPDOWN
+==========================================
+*/
+
+.genre-dropdown{
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    right:0;
+
+    z-index:1000;
+
+    margin-top:8px;
+
+    display:none;
+
+    max-height:280px;
+
+    overflow-y:auto;
+
+    border-radius:14px;
+
+    background:#0a1220;
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    box-shadow:
+        0 10px 25px rgba(
+            0,
+            0,
+            0,
+            .35
+        );
+}
+
+.genre-dropdown.show{
+    display:block;
+}
+
+/*
+==========================================
+SCROLLBAR
+==========================================
+*/
+
+.genre-dropdown::-webkit-scrollbar{
+    width:8px;
+}
+
+.genre-dropdown::-webkit-scrollbar-track{
+    background:#08111f;
+}
+
+.genre-dropdown::-webkit-scrollbar-thumb{
+    background:#164e63;
+
+    border-radius:999px;
+}
+
+.genre-dropdown::-webkit-scrollbar-thumb:hover{
+    background:#22d3ee;
+}
+
+/* ==========================================
+   DROPDOWN GRID
+========================================== */
+
+.genre-dropdown{
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    right:0;
+
+    z-index:1000;
+
+    margin-top:8px;
+
+    display:none;
+
+    max-height:320px;
+
+    overflow-y:auto;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    background:#0a1220;
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    box-shadow:
+        0 10px 25px rgba(
+            0,
+            0,
+            0,
+            .35
+        );
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap:8px;
+}
+
+.genre-dropdown.show{
+    display:grid;
+}
+
+/* ==========================================
+   GENRE OPTION
+========================================== */
+
+.genre-option{
+    padding:12px 14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    color:#e5e7eb;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .03
+        );
+
+    border:
+        1px solid transparent;
+
+    transition:.2s;
+}
+
+.genre-option:hover{
+
+    background:
+        rgba(
+            34,
+            211,
+            238,
+            .12
+        );
+
+    border-color:
+        rgba(
+            34,
+            211,
+            238,
+            .35
+        );
+
+    color:#22d3ee;
+}
+
+.genre-option.selected{
+
+    opacity:.35;
+
+    pointer-events:none;
+
+    background:
+        rgba(
+            34,
+            211,
+            238,
+            .10
+        );
+
+    border-color:
+        rgba(
+            34,
+            211,
+            238,
+            .25
+        );
+}
+.genre-option.highlighted{
+
+    background:
+        rgba(
+            34,
+            211,
+            238,
+            .18
+        );
+
+    border-color:
+        rgba(
+            34,
+            211,
+            238,
+            .4
+        );
+
+    color:#22d3ee;
+}
+
+.genre-no-result{
+
+    padding:15px;
+
+    text-align:center;
+
+    color:#94a3b8;
+}
+/*
+==========================================
+HELP TEXT
+==========================================
+*/
+
+.genre-selector + small{
+    display:block;
+
+    margin-top:8px;
+
+    color:#94a3b8;
+}
+
+/*
+==========================================
+MOBILE
+==========================================
+*/
+
+@media(max-width:768px){
+
+    .genre-chip{
+        font-size:.85rem;
+
+        padding:7px 12px;
+    }
+
+    .genre-search-input{
+        padding:12px 14px;
+    }
+
+    .genre-dropdown{
+        max-height:220px;
+    }
+
+}
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .genre-dropdown{
+
+        grid-template-columns:
+            1fr;
+
+        max-height:240px;
+    }
+
+}
