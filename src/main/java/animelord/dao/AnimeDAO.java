@@ -2,6 +2,7 @@ package animelord.dao;
 
 import animelord.entities.Anime;
 import animelord.util.DBConnection;
+import animelord.dao.GenreDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -79,7 +80,144 @@ public class AnimeDAO {
             return false;
         }
     }
+    //Add Anime and get ID
+        public int addAnimeAndGetId(
+            Anime anime) {
 
+        String sql =
+                "INSERT INTO anime("
+                + "title,"
+                + "synopsis,"
+                + "cover_image,"
+                + "banner_image,"
+                + "release_year,"
+                + "status,"
+                + "total_views"
+                + ") "
+                + "VALUES(?,?,?,?,?,?,?)";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(
+                                sql,
+                                Statement.RETURN_GENERATED_KEYS
+                        )
+        ){
+
+            ps.setString(
+                    1,
+                    anime.getTitle()
+            );
+
+            ps.setString(
+                    2,
+                    anime.getSynopsis()
+            );
+
+            ps.setString(
+                    3,
+                    anime.getCoverImage()
+            );
+
+            ps.setString(
+                    4,
+                    anime.getBannerImage()
+            );
+
+            ps.setInt(
+                    5,
+                    anime.getReleaseYear()
+            );
+
+            ps.setString(
+                    6,
+                    anime.getStatus()
+            );
+
+            ps.setLong(
+                    7,
+                    anime.getTotalViews()
+            );
+
+            int rows =
+                    ps.executeUpdate();
+
+            if(rows == 0){
+
+                return 0;
+
+            }
+
+            ResultSet rs =
+                    ps.getGeneratedKeys();
+
+            if(rs.next()){
+
+                return rs.getInt(1);
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+    }
+    //Genere Search
+        public List<Anime> getAnimeByGenre(
+            int genreId) {
+
+        List<Anime> animeList =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT a.* "
+                + "FROM anime a "
+                + "INNER JOIN anime_genres ag "
+                + "ON a.anime_id = ag.anime_id "
+                + "WHERE ag.genre_id=? "
+                + "ORDER BY a.title";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    genreId
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()){
+
+                animeList.add(
+                        mapAnime(rs)
+                );
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return animeList;
+    }
+        
     /*
         GET ALL ANIME
      */
@@ -490,7 +628,7 @@ public class AnimeDAO {
 
             if (rs.next()) {
 
-                return mapAnime(rs);
+                return mapAnimeWithGenres(rs);
 
             }
 
@@ -688,7 +826,9 @@ public class AnimeDAO {
     /*
         RESULTSET -> ANIME
      */
-    private Anime mapAnime(ResultSet rs) throws SQLException {
+    private Anime mapAnime(
+            ResultSet rs)
+            throws SQLException {
 
         Anime anime =
                 new Anime();
@@ -746,6 +886,38 @@ public class AnimeDAO {
                         "created_at"
                 )
         );
+
+        return anime;
+    }
+    /*
+    RESULTSET -> ANIME WITH GENRES
+    */
+    private Anime mapAnimeWithGenres(
+            ResultSet rs)
+            throws SQLException {
+
+        Anime anime =
+                mapAnime(
+                        rs
+                );
+
+        try{
+
+            GenreDAO genreDAO =
+                    new GenreDAO();
+
+            anime.setGenres(
+                    genreDAO.getGenresByAnime(
+                            anime.getAnimeId()
+                    )
+            );
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
 
         return anime;
     }

@@ -20,9 +20,10 @@ public class EpisodeDAO {
                 + "episode_number,"
                 + "episode_title,"
                 + "description,"
-                + "duration_seconds"
+                + "duration_seconds,"
+                + "uploaded_video_path"
                 + ") "
-                + "VALUES(?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?)";
 
         try (
                 Connection con =
@@ -56,6 +57,11 @@ public class EpisodeDAO {
                     5,
                     episode.getDurationSeconds()
             );
+            
+            ps.setString(
+                    6,
+                    episode.getUploadedVideoPath()
+            );
 
             return ps.executeUpdate() > 0;
 
@@ -67,6 +73,136 @@ public class EpisodeDAO {
             return false;
         }
     }
+    /*
+    ADD EPISODE
+    AND RETURN GENERATED ID
+    */
+    public int addEpisodeAndGetId(
+            Episode episode) {
+
+       String sql = "INSERT INTO episodes("
+                    + "anime_id,"
+                    + "episode_number,"
+                    + "episode_title,"
+                    + "description,"
+                    + "duration_seconds,"
+                    + "uploaded_video_path"
+                    + ") "
+                    + "VALUES(?,?,?,?,?,?)";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(
+                                sql,
+                                Statement.RETURN_GENERATED_KEYS
+                        )
+        ){
+
+            ps.setInt(
+                    1,
+                    episode.getAnimeId()
+            );
+
+            ps.setInt(
+                    2,
+                    episode.getEpisodeNumber()
+            );
+
+            ps.setString(
+                    3,
+                    episode.getEpisodeTitle()
+            );
+
+            ps.setString(
+                    4,
+                    episode.getDescription()
+            );
+
+            ps.setInt(
+                    5,
+                    episode.getDurationSeconds()
+            );
+            
+            ps.setString(
+                    6,
+                    episode.getUploadedVideoPath()
+            );
+
+            int rows =
+                    ps.executeUpdate();
+
+            if(rows > 0){
+
+                ResultSet rs =
+                        ps.getGeneratedKeys();
+
+                if(rs.next()){
+
+                    return rs.getInt(1);
+
+                }
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return -1;
+    }
+    /*
+    CHECK IF EPISODE EXISTS
+    */
+    public boolean episodeExists(
+            int animeId,
+            int episodeNumber) {
+
+        String sql =
+                "SELECT 1 "
+                + "FROM episodes "
+                + "WHERE anime_id=? "
+                + "AND episode_number=?";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(
+                                sql
+                        )
+        ){
+
+            ps.setInt(
+                    1,
+                    animeId
+            );
+
+            ps.setInt(
+                    2,
+                    episodeNumber
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            return rs.next();
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+    }
+
     /*
     RECENTLY ADDED EPISODE CARDS
     */
@@ -168,6 +304,46 @@ public class EpisodeDAO {
         }
 
         return cards;
+    }
+    
+    //Get All Episodes
+    public List<Episode> getAllEpisodes() {
+
+        List<Episode> episodes =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT * "
+                + "FROM episodes "
+                + "ORDER BY upload_date DESC";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql);
+
+                ResultSet rs =
+                        ps.executeQuery()
+        ){
+
+            while(rs.next()){
+
+                episodes.add(
+                        mapEpisode(rs)
+                );
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return episodes;
     }
 
     /*
@@ -355,32 +531,32 @@ public class EpisodeDAO {
 
         String sql =
                 "UPDATE episodes "
-                + "SET episode_title=?, "
-                + "description=?, "
-                + "duration_seconds=? "
+                + "SET episode_number=?, "
+                + "episode_title=?, "
+                + "description=? "
                 + "WHERE episode_id=?";
 
-        try (
+        try(
                 Connection con =
                         DBConnection.getConnection();
 
                 PreparedStatement ps =
                         con.prepareStatement(sql)
-        ) {
+        ){
 
-            ps.setString(
+            ps.setInt(
                     1,
-                    episode.getEpisodeTitle()
+                    episode.getEpisodeNumber()
             );
 
             ps.setString(
                     2,
-                    episode.getDescription()
+                    episode.getEpisodeTitle()
             );
 
-            ps.setInt(
+            ps.setString(
                     3,
-                    episode.getDurationSeconds()
+                    episode.getDescription()
             );
 
             ps.setInt(
@@ -391,12 +567,13 @@ public class EpisodeDAO {
             return ps.executeUpdate() > 0;
 
         }
-        catch (Exception e) {
+        catch(Exception e){
 
             e.printStackTrace();
 
-            return false;
         }
+
+        return false;
     }
     /*
         NEXT EPISODE
@@ -575,7 +752,58 @@ public class EpisodeDAO {
             return false;
         }
     }
+    //Search Episodes
+    public List<Episode> searchEpisodes(
+        String keyword) {
 
+        List<Episode> episodes =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT * "
+                + "FROM episodes "
+                + "WHERE episode_title LIKE ? "
+                + "OR description LIKE ? "
+                + "ORDER BY upload_date DESC";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setString(
+                    1,
+                    "%" + keyword + "%"
+            );
+
+            ps.setString(
+                    2,
+                    "%" + keyword + "%"
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()){
+
+                episodes.add(
+                        mapEpisode(rs)
+                );
+
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return episodes;
+    }
     /*
         GET TOTAL EPISODES
     */
@@ -695,6 +923,12 @@ public class EpisodeDAO {
         episode.setDurationSeconds(
                 rs.getInt(
                         "duration_seconds"
+                )
+        );
+        
+        episode.setUploadedVideoPath(
+                rs.getString(
+                        "uploaded_video_path"
                 )
         );
 
