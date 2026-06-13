@@ -1,0 +1,147 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="trending-section">
+
+    <div class="section-header">
+
+        <a href="${pageContext.request.contextPath}/trending"
+           class="section-link">
+
+            🔥 Trending →
+
+        </a>
+
+    </div>
+
+    <div id="trendingCarousel"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         data-bs-interval="6000">
+
+        <!-- INDICATORS -->
+
+        <div class="carousel-indicators anime-indicators">
+
+            <c:forEach items="${trendingAnime}"
+                       var="anime"
+                       varStatus="status">
+
+                <button
+                    type="button"
+                    data-bs-target="#trendingCarousel"
+                    data-bs-slide-to="${status.index}"
+                    class="${status.first ? 'active' : ''}"
+                    aria-current="${status.first ? 'true' : 'false'}"
+                    aria-label="Slide ${status.index + 1}">
+                </button>
+
+            </c:forEach>
+
+        </div>
+
+        <!-- SLIDES -->
+
+        <div class="carousel-inner">
+
+            <c:forEach items="${trendingAnime}"
+                       var="anime"
+                       varStatus="status">
+
+                <div class="carousel-item ${status.first ? 'active' : ''}">
+
+                    <div class="hero-banner">
+
+                        <img
+                            src="${pageContext.request.contextPath}${anime.bannerImage}"
+                            alt="${anime.title}"
+                            class="hero-image">
+
+                        <div class="hero-overlay">
+
+                            <div class="hero-content">
+
+                                <span class="hero-tag">
+
+                                    Trending #${status.index + 1}
+
+                                </span>
+
+                                <h1 class="hero-title">
+
+                                    ${anime.title}
+
+                                </h1>
+
+                                <p class="hero-synopsis">
+
+                                    ${anime.synopsis}
+
+                                </p>
+
+                                <div class="hero-meta">
+
+                                    <span>
+
+                                        ${anime.releaseYear}
+
+                                    </span>
+
+                                    <span>
+
+                                        ${anime.status}
+
+                                    </span>
+
+                                    <span>
+
+                                        👁 ${anime.totalViews}
+
+                                    </span>
+
+                                </div>
+
+                                <a href="${pageContext.request.contextPath}/anime?id=${anime.animeId}"
+                                   class="watch-btn">
+
+                                    View Details
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </c:forEach>
+
+        </div>
+
+        <!-- CONTROLS -->
+
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#trendingCarousel"
+            data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#trendingCarousel"
+            data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
+    </div>
+
+</section>
