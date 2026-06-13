@@ -1,0 +1,24 @@
+<%@ page pageEncoding="UTF-8" %>
+<div
+        id="reports"
+        class="glass-card">
+
+    <h5 class="mb-3">
+
+        💬 Feedback Reports
+
+    </h5>
+
+    <ul class="mb-0">
+
+        <li>
+            Sample Feedback
+        </li>
+
+        <li>
+            Another Feedback
+        </li>
+
+    </ul>
+
+</div>
