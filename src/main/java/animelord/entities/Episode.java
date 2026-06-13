@@ -15,7 +15,7 @@ public class Episode {
     private String description;
 
     private int durationSeconds;
-
+    private String uploadedVideoPath;
     private Timestamp uploadDate;
 
     /*
@@ -96,7 +96,18 @@ public class Episode {
     public void setDurationSeconds(int durationSeconds) {
         this.durationSeconds = durationSeconds;
     }
+    
+    public String getUploadedVideoPath() {
+    return uploadedVideoPath;
+    }
+    
+    public void setUploadedVideoPath(
+        String uploadedVideoPath) {
 
+    this.uploadedVideoPath =
+            uploadedVideoPath;
+    }
+    
     public Timestamp getUploadDate() {
         return uploadDate;
     }
@@ -115,6 +126,7 @@ public class Episode {
                 + ", episodeTitle='" + episodeTitle + '\''
                 + ", description='" + description + '\''
                 + ", durationSeconds=" + durationSeconds
+                + ", uploadedVideoPath='" + uploadedVideoPath + '\''
                 + ", uploadDate=" + uploadDate
                 + '}';
     }
