@@ -1,16 +1,23 @@
 <%@ page pageEncoding="UTF-8" %>
+
 <div class="anime-card">
 
-    <img src="${coverImage}">
+    <img
+        src="${pageContext.request.contextPath}${coverImage}"
+        alt="${animeTitle}">
 
     <div class="ep-badge">
+
         Ep ${episodeNumber}
+
     </div>
 
     <div class="card-body">
 
         <small>
+
             ${animeTitle}
+
         </small>
 
     </div>
