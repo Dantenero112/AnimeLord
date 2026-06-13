@@ -57,35 +57,23 @@
 
                 <c:when test="${view eq 'uploadEpisode'}">
 
-                    <h3 class="mb-4">
-
-                        📺 Upload Episode
-
-                    </h3>
-
                     <%@ include file="/WEB-INF/views/fragments/admin/components/uploadEpisode.jspf" %>
 
                 </c:when>
 
                 <c:when test="${view eq 'manageEpisodes'}">
 
-                    <h3 class="mb-4">
-
-                        🎞 Manage Episodes
-
-                    </h3>
-
                     <%@ include file="/WEB-INF/views/fragments/admin/components/manageEpisodes.jspf" %>
+
+                </c:when>
+                
+                <c:when test="${view eq 'editEpisode'}">
+
+                    <%@ include file="/WEB-INF/views/fragments/admin/components/editEpisode.jspf" %>
 
                 </c:when>
 
                 <c:when test="${view eq 'encodingQueue'}">
-
-                    <h3 class="mb-4">
-
-                        ⚙️ Encoding Queue
-
-                    </h3>
 
                     <%@ include file="/WEB-INF/views/fragments/admin/components/encodingQueue.jspf" %>
 
