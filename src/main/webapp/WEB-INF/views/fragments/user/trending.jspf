@@ -101,7 +101,7 @@
 
                                 </div>
 
-                                <a href="${pageContext.request.contextPath}/anime?id=${anime.animeId}"
+                                <a href="${pageContext.request.contextPath}/animeDetails?id=${anime.animeId}"
                                    class="watch-btn">
 
                                     View Details
