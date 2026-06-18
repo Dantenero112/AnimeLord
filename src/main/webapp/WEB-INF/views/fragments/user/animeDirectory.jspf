@@ -1,0 +1,112 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="anime-directory-section">
+
+
+    <div class="section-header">
+
+        <a href="${pageContext.request.contextPath}/anime"
+           class="section-link">
+
+            📚 Browse Anime →
+
+        </a>
+
+    </div>
+
+
+    <div class="directory-meta">
+
+        <span>
+
+            ${animeCount} Anime Found
+
+        </span>
+
+    </div>
+
+
+    <div class="alphabet-filter">
+
+     
+
+        <a href="${pageContext.request.contextPath}/anime"
+           class="alphabet-btn
+           ${selectedLetter eq 'ALL' ? 'active' : ''}">
+
+            A-Z
+
+        </a>
+
+
+
+        <a href="${pageContext.request.contextPath}/anime?letter=%23"
+           class="alphabet-btn
+           ${selectedLetter eq '#' ? 'active' : ''}">
+
+            #
+
+        </a>
+
+       
+
+        <c:forEach items="${alphabet}"
+                   var="letter">
+
+            <a href="${pageContext.request.contextPath}/anime?letter=${letter}"
+               class="alphabet-btn
+               ${selectedLetter eq letter ? 'active' : ''}">
+
+                ${letter}
+
+            </a>
+
+        </c:forEach>
+
+    </div>
+
+   
+
+    <c:choose>
+
+        <c:when test="${not empty animeList}">
+
+            <div class="anime-directory-grid">
+
+                <c:forEach items="${animeList}"
+                           var="anime">
+
+                    <%@ include file="/WEB-INF/views/fragments/user/animeDirectoryCard.jspf" %>
+
+                </c:forEach>
+
+            </div>
+
+        </c:when>
+
+     
+
+        <c:otherwise>
+
+            <div class="empty-directory">
+
+                <h3>
+
+                    No Anime Found
+
+                </h3>
+
+                <p>
+
+                    No anime available for this filter.
+
+                </p>
+
+            </div>
+
+        </c:otherwise>
+
+    </c:choose>
+
+</section>

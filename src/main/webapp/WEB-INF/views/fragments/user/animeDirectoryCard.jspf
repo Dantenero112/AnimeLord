@@ -1,0 +1,53 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="anime-card">
+
+    <div class="anime-poster-wrapper">
+
+        <img
+            src="${pageContext.request.contextPath}${anime.coverImage}"
+            alt="${anime.title}"
+            class="anime-poster">
+
+        <div class="anime-status">
+
+            ${anime.status}
+
+        </div>
+
+    </div>
+
+    <div class="anime-card-body">
+
+        <h5 class="anime-title">
+
+            ${anime.title}
+
+        </h5>
+
+        <div class="anime-meta">
+
+            <span>
+
+                ${anime.releaseYear}
+
+            </span>
+
+            <span>
+
+                👁 ${anime.totalViews}
+
+            </span>
+
+        </div>
+
+        <a href="${pageContext.request.contextPath}/animeDetails?id=${anime.animeId}"
+           class="anime-btn">
+
+            View Details
+
+        </a>
+
+    </div>
+
+</div>
