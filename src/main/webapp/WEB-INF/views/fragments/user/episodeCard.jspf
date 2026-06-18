@@ -1,0 +1,40 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="episode-card"
+     data-episode="${episode.episodeNumber}">
+
+    <a href="${pageContext.request.contextPath}/watch?episodeId=${episode.episodeId}"
+       class="episode-card-link">
+
+        <!-- THUMBNAIL -->
+
+        <div class="episode-thumbnail-wrapper">
+
+            <img
+                src="${pageContext.request.contextPath}${episode.thumbnailPath}"
+                alt="${episode.episodeTitle}"
+                class="episode-thumbnail">
+
+            <span class="episode-number-badge">
+
+                EP ${episode.episodeNumber}
+
+            </span>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="episode-card-body">
+
+            <h5 class="episode-title">
+
+                ${episode.episodeTitle}
+
+            </h5>
+
+        </div>
+
+    </a>
+
+</div>

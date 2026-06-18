@@ -1,0 +1,114 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="related-anime-section">
+
+    <!-- SECTION HEADER -->
+
+    <div class="section-header">
+
+        <a href="${pageContext.request.contextPath}/anime"
+           class="section-link">
+
+            🎯 Related Anime →
+
+        </a>
+
+    </div>
+
+    <!-- RELATED ANIME GRID -->
+
+    <c:choose>
+
+        <c:when test="${not empty relatedAnime}">
+
+            <div class="anime-directory-grid">
+
+                <c:forEach items="${relatedAnime}"
+                           var="anime">
+
+                    <div class="anime-card">
+
+                        <!-- COVER -->
+
+                        <div class="anime-poster-wrapper">
+
+                            <img
+                                src="${pageContext.request.contextPath}${anime.coverImage}"
+                                alt="${anime.title}"
+                                class="anime-poster">
+
+                            <div class="anime-status">
+
+                                ${anime.status}
+
+                            </div>
+
+                        </div>
+
+                        <!-- CONTENT -->
+
+                        <div class="anime-card-body">
+
+                            <h5 class="anime-title">
+
+                                ${anime.title}
+
+                            </h5>
+
+                            <div class="anime-meta">
+
+                                <span>
+
+                                    ${anime.releaseYear}
+
+                                </span>
+
+                                <span>
+
+                                    👁 ${anime.totalViews}
+
+                                </span>
+
+                            </div>
+
+                            <a href="${pageContext.request.contextPath}/animeDetails?id=${anime.animeId}"
+                               class="anime-btn">
+
+                                View Details
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </c:forEach>
+
+            </div>
+
+        </c:when>
+
+        <c:otherwise>
+
+            <div class="empty-directory">
+
+                <h3>
+
+                    No Related Anime Found
+
+                </h3>
+
+                <p>
+
+                    Related anime recommendations will appear here.
+
+                </p>
+
+            </div>
+
+        </c:otherwise>
+
+    </c:choose>
+
+</section>

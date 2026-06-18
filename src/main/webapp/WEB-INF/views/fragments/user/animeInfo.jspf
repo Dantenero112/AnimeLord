@@ -1,0 +1,104 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="anime-details-section">
+
+    <div class="anime-banner">
+
+        <img
+            src="${pageContext.request.contextPath}${anime.bannerImage}"
+            alt="${anime.title}"
+            class="anime-banner-image">
+
+        <div class="anime-banner-overlay"></div>
+
+    </div>
+
+    <div class="anime-info-container">
+
+
+        <div class="anime-cover-wrapper">
+
+            <img
+                src="${pageContext.request.contextPath}${anime.coverImage}"
+                alt="${anime.title}"
+                class="anime-cover">
+
+        </div>
+
+
+        <div class="anime-details-content">
+
+            <h1 class="anime-details-title">
+
+                ${anime.title}
+
+            </h1>
+
+
+            <div class="anime-details-meta">
+
+                <span class="anime-status">
+
+                    ${anime.status}
+
+                </span>
+
+                <span>
+
+                    ${anime.releaseYear}
+
+                </span>
+
+                <span>
+
+                    👁 ${anime.totalViews}
+                </span>
+
+                <span>
+
+                    📺 ${episodeCount} Episodes
+
+                </span>
+
+            </div>
+
+
+            <div class="anime-genres">
+
+                <c:forEach items="${genres}"
+                           var="genre">
+
+                    <a href="${pageContext.request.contextPath}/genre?id=${genre.genreId}"
+                       class="genre-badge">
+
+                        ${genre.genreName}
+
+                    </a>
+
+                </c:forEach>
+
+            </div>
+
+
+            <div class="anime-synopsis-wrapper">
+
+                <h4>
+
+                    Synopsis
+
+                </h4>
+
+                <p class="anime-synopsis">
+
+                    ${anime.synopsis}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

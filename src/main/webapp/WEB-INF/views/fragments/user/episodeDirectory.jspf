@@ -1,0 +1,102 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="episode-directory-section">
+
+    <%-- Header + Search --%>
+
+    <div class="episode-top-bar">
+
+        <div class="episode-heading">
+
+            <h2 class="section-title">
+
+                📺 Episodes
+
+            </h2>
+
+            <span class="episode-count">
+
+                ${episodeCount} Episodes
+
+            </span>
+
+        </div>
+
+        <div class="episode-search-wrapper">
+
+            <input
+                type="number"
+                id="episodeSearch"
+                class="episode-search"
+                placeholder="Jump to Episode...">
+
+        </div>
+
+    </div>
+
+    <%-- Range Buttons + Sort Buttons --%>
+
+    <div class="episode-toolbar">
+
+        <div class="episode-ranges">
+
+            <c:forEach items="${episodeRanges}"
+                       var="range">
+
+                <button
+                    type="button"
+                    class="episode-range-btn
+                    ${selectedRange eq range.rangeLabel ? 'active' : ''}"
+                    data-start="${range.start}"
+                    data-end="${range.end}">
+
+                    ${range.rangeLabel}
+
+                </button>
+
+            </c:forEach>
+
+        </div>
+
+        <div class="episode-sort">
+
+            <button
+                type="button"
+                class="episode-sort-btn
+                ${sort eq 'asc' ? 'active' : ''}"
+                data-sort="asc">
+
+                Ascending
+
+            </button>
+
+            <button
+                type="button"
+                class="episode-sort-btn
+                ${sort eq 'desc' ? 'active' : ''}"
+                data-sort="desc">
+
+                Descending
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <%-- Episode Grid --%>
+
+    <div class="episode-grid"
+         id="episodeGrid">
+
+        <c:forEach items="${episodeCards}"
+                   var="episode">
+
+            <%@ include file="/WEB-INF/views/fragments/user/episodeCard.jspf" %>
+
+        </c:forEach>
+
+    </div>
+
+</section>
