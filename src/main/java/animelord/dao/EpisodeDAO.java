@@ -879,6 +879,109 @@ public class EpisodeDAO {
 
         return 0;
     }
+    
+    /*
+    GET EPISODE CARDS
+    BY ANIME
+    */
+    
+    public List<EpisodeCard> getEpisodeCardsByAnime(
+            int animeId) {
+
+        List<EpisodeCard> cards =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT "
+                + "e.episode_id, "
+                + "e.anime_id, "
+                + "a.title, "
+                + "ef.thumbnail_path, "
+                + "e.episode_number, "
+                + "e.episode_title, "
+                + "e.upload_date "
+                + "FROM episodes e "
+                + "INNER JOIN anime a "
+                + "ON e.anime_id = a.anime_id "
+                + "INNER JOIN episode_files ef "
+                + "ON e.episode_id = ef.episode_id "
+                + "WHERE e.anime_id=? "
+                + "ORDER BY e.episode_number ASC";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    animeId
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()){
+
+                EpisodeCard card =
+                        new EpisodeCard();
+
+                card.setEpisodeId(
+                        rs.getInt(
+                                "episode_id"
+                        )
+                );
+
+                card.setAnimeId(
+                        rs.getInt(
+                                "anime_id"
+                        )
+                );
+
+                card.setAnimeTitle(
+                        rs.getString(
+                                "title"
+                        )
+                );
+
+                card.setThumbnailPath(
+                        rs.getString(
+                                "thumbnail_path"
+                        )
+                );
+
+                card.setEpisodeNumber(
+                        rs.getInt(
+                                "episode_number"
+                        )
+                );
+
+                card.setEpisodeTitle(
+                        rs.getString(
+                                "episode_title"
+                        )
+                );
+
+                card.setUploadDate(
+                        rs.getTimestamp(
+                                "upload_date"
+                        )
+                );
+
+                cards.add(card);
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+
+        return cards;
+    }
 
     /*
         RESULTSET -> EPISODE

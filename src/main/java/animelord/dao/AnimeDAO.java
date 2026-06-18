@@ -641,6 +641,69 @@ public class AnimeDAO {
 
         return null;
     }
+    
+    /*
+    GET ANIME BY LETTER
+    */
+    public List<Anime> getAnimeByLetter(
+            String letter) {
+
+        List<Anime> animeList =
+                new ArrayList<>();
+
+        String sql;
+
+        if("#".equals(letter)){
+
+            sql =
+                    "SELECT * "
+                    + "FROM anime "
+                    + "WHERE title REGEXP '^[0-9]' "
+                    + "ORDER BY title ASC";
+        }
+        else{
+
+            sql =
+                    "SELECT * "
+                    + "FROM anime "
+                    + "WHERE UPPER(title) LIKE ? "
+                    + "ORDER BY title ASC";
+        }
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            if(!"#".equals(letter)){
+
+                ps.setString(
+                        1,
+                        letter.toUpperCase() + "%"
+                );
+            }
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()){
+
+                animeList.add(
+                        mapAnime(rs)
+                );
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+
+        return animeList;
+    }
 
     /*
         SEARCH ANIME
@@ -821,6 +884,72 @@ public class AnimeDAO {
         }
 
         return 0;
+    }
+        
+    /*
+    RELATED ANIME
+    */
+    public List<Anime> getRelatedAnime(
+            int animeId,
+            int limit) {
+
+        List<Anime> animeList =
+                new ArrayList<>();
+
+        String sql =
+                "SELECT DISTINCT a.* "
+                + "FROM anime a "
+                + "INNER JOIN anime_genres ag1 "
+                + "ON a.anime_id = ag1.anime_id "
+                + "WHERE ag1.genre_id IN ( "
+                + "SELECT genre_id "
+                + "FROM anime_genres "
+                + "WHERE anime_id=? "
+                + ") "
+                + "AND a.anime_id<>? "
+                + "ORDER BY a.total_views DESC "
+                + "LIMIT ?";
+
+        try(
+                Connection con =
+                        DBConnection.getConnection();
+
+                PreparedStatement ps =
+                        con.prepareStatement(sql)
+        ){
+
+            ps.setInt(
+                    1,
+                    animeId
+            );
+
+            ps.setInt(
+                    2,
+                    animeId
+            );
+
+            ps.setInt(
+                    3,
+                    limit
+            );
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()){
+
+                animeList.add(
+                        mapAnime(rs)
+                );
+            }
+
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+
+        return animeList;
     }
 
     /*
