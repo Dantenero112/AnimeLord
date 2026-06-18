@@ -972,3 +972,376 @@
     }
 
 }
+
+/*ANIME PAGE*/
+
+/* ==========================================
+   LARGE TABLETS
+========================================== */
+
+@media(max-width:1200px){
+
+    .anime-directory-grid{
+
+        grid-template-columns:
+            repeat(
+                5,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media(max-width:992px){
+
+    .anime-directory-grid{
+
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .alphabet-filter{
+        gap:8px;
+
+        padding:15px;
+    }
+
+    .alphabet-btn{
+        width:38px;
+
+        height:38px;
+
+        font-size:.9rem;
+    }
+
+    .anime-directory-grid{
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+        gap:16px;
+    }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+    .alphabet-filter{
+        justify-content:center;
+    }
+
+    .directory-meta{
+        text-align:center;
+    }
+
+}
+
+/* ===============================
+==================================
+       ANIME DETAILS PAGE
+==================================
+=================================*/
+
+/* ==========================================
+   ANIME DETAILS PAGE
+   TABLET
+========================================== */
+
+@media(max-width:991px){
+
+    /* ==========================
+       INFO SECTION
+    ========================== */
+
+    .anime-banner{
+
+        height:340px;
+    }
+
+    .anime-info-container{
+
+        gap:25px;
+    }
+
+    .anime-cover{
+
+        width:220px;
+
+        height:320px;
+    }
+
+    .anime-details-title{
+
+        font-size:2.2rem;
+    }
+
+    /* ==========================
+       EPISODES
+    ========================== */
+
+    .episode-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .episode-thumbnail{
+
+        height:150px;
+    }
+
+    /* ==========================
+       RELATED ANIME
+    ========================== */
+
+    .related-anime-section
+    .anime-directory-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+}
+
+/* ==========================================
+   ANIME DETAILS PAGE
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    /* ==========================
+       BANNER
+    ========================== */
+
+    .anime-banner{
+
+        height:220px;
+
+        border-radius:16px;
+    }
+
+    /* ==========================
+       INFO SECTION
+    ========================== */
+
+    .anime-info-container{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:20px;
+    }
+
+    .anime-cover{
+
+        width:190px;
+
+        height:280px;
+    }
+
+    .anime-details-title{
+
+        font-size:1.8rem;
+
+        margin-bottom:15px;
+    }
+
+    .anime-details-meta{
+
+        justify-content:center;
+    }
+
+    .anime-genres{
+
+        justify-content:center;
+    }
+
+    .anime-synopsis-wrapper{
+
+        text-align:left;
+    }
+
+    /* ==========================
+       EPISODE HEADER
+    ========================== */
+
+    .episode-top-bar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:15px;
+    }
+
+    .episode-search-wrapper{
+
+        width:100%;
+    }
+
+    .episode-search{
+
+        width:100%;
+    }
+
+    /* ==========================
+       TOOLBAR
+    ========================== */
+
+    .episode-toolbar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:15px;
+    }
+
+    .episode-ranges{
+
+        justify-content:flex-start;
+    }
+
+    .episode-sort{
+
+        width:100%;
+
+        justify-content:space-between;
+    }
+
+    .episode-sort-btn{
+
+        flex:1;
+    }
+
+    /* ==========================
+       EPISODE GRID
+    ========================== */
+
+    .episode-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:15px;
+    }
+
+    .episode-thumbnail{
+
+        height:130px;
+    }
+
+    .episode-title{
+
+        font-size:.85rem;
+    }
+
+    /* ==========================
+       RELATED ANIME
+    ========================== */
+
+    .related-anime-section
+    .anime-directory-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+    .anime-banner{
+
+        height:180px;
+    }
+
+    .anime-cover{
+
+        width:160px;
+
+        height:235px;
+    }
+
+    .anime-details-title{
+
+        font-size:1.5rem;
+    }
+
+    .anime-details-meta span{
+
+        font-size:.8rem;
+
+        padding:6px 10px;
+    }
+
+    .genre-badge{
+
+        font-size:.8rem;
+
+        padding:6px 12px;
+    }
+
+    .episode-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .episode-thumbnail{
+
+        height:110px;
+    }
+
+    .episode-card-body{
+
+        padding:10px;
+    }
+
+    .episode-title{
+
+        font-size:.8rem;
+    }
+
+    .episode-number-badge{
+
+        font-size:.7rem;
+
+        padding:4px 8px;
+    }
+
+    .section-title{
+
+        font-size:1.6rem;
+    }
+}
