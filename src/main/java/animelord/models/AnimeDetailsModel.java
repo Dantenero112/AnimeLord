@@ -285,7 +285,17 @@ public class AnimeDetailsModel
                 "relatedAnime",
                 relatedAnime
         );
+        
+        request.setAttribute(
+                "animeCountFooter",
+                animeDAO.getAnimeCount()
+        );
 
+        request.setAttribute(
+                "episodeCountFooter",
+                episodeDAO.getEpisodeCount()
+        );
+        
         /*
             FORWARD
         */
