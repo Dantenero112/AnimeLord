@@ -1345,3 +1345,534 @@
         font-size:1.6rem;
     }
 }
+
+/*==========================
+  WATCH PAGE RESPONSIVE
+  =========================*/
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(max-width:991px){
+
+    .anime-player{
+
+        height:58vh;
+    }
+
+    .player-controls{
+
+        padding:10px;
+    }
+
+    .controls-row{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        flex-wrap:nowrap;
+
+        gap:8px;
+    }
+
+    .controls-left,
+    .controls-right{
+
+        display:flex;
+
+        align-items:center;
+
+        flex-wrap:nowrap;
+
+        gap:5px;
+    }
+
+    .player-btn{
+
+        width:34px;
+
+        height:34px;
+
+        min-width:34px;
+    }
+
+    .player-select{
+
+        min-width:64px;
+
+        max-width:74px;
+
+        height:34px;
+
+        font-size:.72rem;
+
+        padding:0 4px;
+    }
+
+    .volume-slider{
+
+        width:70px !important;
+
+        opacity:1 !important;
+
+        visibility:visible !important;
+    }
+
+    .time-display{
+
+        white-space:nowrap;
+        padding-left: 5px;
+        min-width:78px;
+
+        font-size:.75rem;
+    }
+
+    .big-play-btn{
+
+        width:72px;
+
+        height:72px;
+
+        font-size:1.9rem;
+    }
+
+    .watch-navigation{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr 1fr;
+        
+        gap:8px;
+        width: 100%;
+    }
+
+    .watch-nav-left,
+    .watch-nav-center,
+    .watch-nav-right{
+        text-align: center;
+        width:100%;
+        min-width: 0;
+    }
+
+    .watch-nav-btn{
+        display: flex;
+        width:100%;
+        justify-content: center;
+    }
+
+    .watch-anime-title{
+
+        font-size:1.45rem;
+    }
+
+    .watch-cover{
+
+        width:110px;
+
+        height:155px;
+    }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .anime-player{
+
+        height:44vh;
+    }
+
+    .player-controls{
+
+        padding:8px;
+    }
+
+    .controls-row{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        flex-wrap:nowrap;
+
+        gap:4px;
+    }
+
+    .controls-left,
+    .controls-right{
+
+        display:flex;
+
+        align-items:center;
+
+        flex-wrap:nowrap;
+
+        gap:3px;
+    }
+
+    .player-btn{
+
+        width:30px;
+
+        height:30px;
+
+        min-width:30px;
+
+        font-size:.8rem;
+    }
+
+    .player-select{
+
+        min-width:58px;
+
+        max-width:66px;
+
+        height:28px;
+
+        font-size:.65rem;
+
+        padding:0 3px;
+    }
+
+    .volume-slider{
+
+        width:50px !important;
+
+        opacity:1 !important;
+
+        visibility:visible !important;
+    }
+
+    .time-display{
+
+        white-space:nowrap;
+
+        min-width:70px;
+
+        font-size:.65rem;
+    }
+
+    .big-play-btn{
+
+        width:58px;
+
+        height:58px;
+
+        font-size:1.4rem;
+    }
+
+    .watch-navigation{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr 1fr;
+
+        gap:8px;
+    }
+
+    .watch-nav-btn{
+
+        width:100%;
+
+        padding:10px 4px;
+
+        font-size:.75rem;
+    }
+
+    .watch-info-card{
+
+        flex-direction:row;
+
+        text-align:left;
+
+        padding:15px;
+    }
+
+    .watch-cover{
+
+        width:90px;
+
+        height:130px;
+    }
+
+    .watch-anime-title{
+
+        font-size:1.1rem;
+    }
+
+    .watch-episode-title{
+
+        font-size:.82rem;
+    }
+
+    .offcanvas{
+
+        width:320px !important;
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+    .anime-player{
+
+        height:36vh;
+    }
+
+    .controls-row{
+
+        gap:2px;
+    }
+
+    .controls-left{
+
+        gap:2px;
+    }
+
+    .controls-right{
+
+        gap:2px;
+    }
+
+    .player-btn{
+
+        width:26px;
+
+        height:26px;
+
+        min-width:26px;
+
+        font-size:.7rem;
+    }
+
+    .player-select{
+
+        min-width:50px;
+
+        max-width:56px;
+
+        height:26px;
+
+        font-size:.58rem;
+
+        padding:0 2px;
+    }
+
+    .volume-slider{
+
+        width:36px !important;
+    }
+
+    .time-display{
+
+        min-width:60px;
+
+        font-size:.56rem;
+
+        white-space:nowrap;
+    }
+
+    .big-play-btn{
+
+        width:50px;
+
+        height:50px;
+
+        font-size:1.1rem;
+    }
+
+    .watch-nav-btn{
+
+        padding:8px 2px;
+
+        font-size:.65rem;
+    }
+
+    .watch-cover{
+
+        width:75px;
+
+        height:110px;
+    }
+
+    .watch-anime-title{
+
+        font-size:.95rem;
+    }
+
+    .watch-episode-title{
+
+        font-size:.72rem;
+    }
+
+    .offcanvas{
+
+        width:100% !important;
+    }
+}
+
+/* ==========================================
+   BELOW 400px
+========================================== */
+
+@media(max-width:400px){
+
+    .anime-player{
+
+        height:32vh;
+    }
+
+    .player-controls{
+
+        padding:5px;
+    }
+
+    .controls-row{
+
+        gap:1px;
+    }
+
+    .controls-left{
+
+        gap:1px;
+    }
+
+    .controls-right{
+
+        gap:1px;
+    }
+
+    .player-btn{
+
+        width:22px;
+
+        height:22px;
+
+        min-width:22px;
+
+        font-size:.6rem;
+    }
+
+    .player-select{
+
+        width:44px;
+
+        min-width:44px;
+
+        max-width:44px;
+
+        height:22px;
+
+        font-size:.5rem;
+
+        padding:0 1px;
+    }
+
+    .volume-slider{
+
+        width:24px !important;
+    }
+
+    .time-display{
+
+        min-width:50px;
+
+        font-size:.5rem;
+
+        white-space:nowrap;
+    }
+
+    .watch-nav-btn{
+
+        font-size:.55rem;
+
+        padding:6px 1px;
+    }
+
+    .big-play-btn{
+
+        width:46px;
+
+        height:46px;
+
+        font-size:.95rem;
+    }
+
+    .watch-cover{
+
+        width:65px;
+
+        height:95px;
+    }
+
+    .watch-anime-title{
+
+        font-size:.85rem;
+    }
+
+    .watch-episode-title{
+
+        font-size:.65rem;
+    }
+}
+
+/* ==========================================
+   ULTRA SMALL
+========================================== */
+
+@media(max-width:340px){
+
+    .anime-player{
+
+        height:28vh;
+    }
+
+    .player-btn{
+
+        width:20px;
+
+        height:20px;
+
+        min-width:20px;
+
+        font-size:.5rem;
+    }
+
+    .player-select{
+
+        width:40px;
+
+        min-width:40px;
+
+        max-width:40px;
+
+        font-size:.45rem;
+    }
+
+    .volume-slider{
+
+        width:20px !important;
+    }
+
+    .time-display{
+
+        min-width:44px;
+
+        font-size:.45rem;
+    }
+
+    .watch-nav-btn{
+
+        font-size:.48rem;
+    }
+}
