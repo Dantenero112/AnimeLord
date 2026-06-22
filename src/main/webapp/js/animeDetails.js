@@ -43,6 +43,97 @@ if(episodeSearch){
 
 /*
 ==========================================
+    RANGE FILTER
+==========================================
+*/
+
+const rangeButtons =
+        document.querySelectorAll(
+                ".episode-range-btn"
+        );
+
+rangeButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                    "click",
+                    function(){
+
+                        rangeButtons.forEach(
+                                btn =>
+                                        btn.classList.remove(
+                                                "active"
+                                        )
+                        );
+
+                        this.classList.add(
+                                "active"
+                        );
+
+                        const start =
+                                parseInt(
+                                        this.dataset.start
+                                );
+
+                        const end =
+                                parseInt(
+                                        this.dataset.end
+                                );
+
+                        filterEpisodes(
+                                start,
+                                end
+                        );
+                    }
+            );
+        }
+);
+
+/*
+==========================================
+    FILTER EPISODES
+==========================================
+*/
+
+function filterEpisodes(
+        start,
+        end
+){
+
+    const episodeCards =
+            document.querySelectorAll(
+                    ".episode-card"
+            );
+
+    episodeCards.forEach(
+            card => {
+
+                const episodeNumber =
+                        parseInt(
+                                card.dataset.episode
+                        );
+
+                if(
+                        episodeNumber >= start
+                        &&
+                        episodeNumber <= end
+                ){
+
+                    card.style.display =
+                            "";
+
+                }
+                else{
+
+                    card.style.display =
+                            "none";
+                }
+            }
+    );
+}
+
+/*
+==========================================
     JUMP TO EPISODE
 ==========================================
 */
@@ -56,17 +147,11 @@ function jumpToEpisode(
                     `[data-episode="${episodeNumber}"]`
             );
 
-    /*
-        NOT FOUND
-    */
     if(!episodeCard){
 
         return;
     }
 
-    /*
-        REMOVE OLD HIGHLIGHTS
-    */
     document
             .querySelectorAll(
                     ".episode-card.highlighted"
@@ -78,9 +163,6 @@ function jumpToEpisode(
                             )
             );
 
-    /*
-        FIND RANGE BUTTON
-    */
     const rangeButtons =
             document.querySelectorAll(
                     ".episode-range-btn"
@@ -112,13 +194,15 @@ function jumpToEpisode(
                     button.classList.add(
                             "active"
                     );
+
+                    filterEpisodes(
+                            start,
+                            end
+                    );
                 }
             }
     );
 
-    /*
-        SCROLL
-    */
     episodeCard.scrollIntoView({
 
         behavior:
@@ -128,16 +212,10 @@ function jumpToEpisode(
                 "center"
     });
 
-    /*
-        HIGHLIGHT
-    */
     episodeCard.classList.add(
             "highlighted"
     );
 
-    /*
-        REMOVE HIGHLIGHT LATER
-    */
     setTimeout(
             () => {
 
@@ -149,3 +227,34 @@ function jumpToEpisode(
             4000
     );
 }
+
+/*
+==========================================
+    DEFAULT ACTIVE RANGE
+==========================================
+*/
+
+document.addEventListener(
+        "DOMContentLoaded",
+        function(){
+
+            const activeRange =
+                    document.querySelector(
+                            ".episode-range-btn.active"
+                    );
+
+            if(activeRange){
+
+                filterEpisodes(
+
+                        parseInt(
+                                activeRange.dataset.start
+                        ),
+
+                        parseInt(
+                                activeRange.dataset.end
+                        )
+                );
+            }
+        }
+);
