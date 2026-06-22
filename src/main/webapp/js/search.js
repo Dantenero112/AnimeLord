@@ -141,7 +141,7 @@ document.addEventListener(
                                         1
                                 )
                         )}`
-                        + `/anime?id=`
+                        + `/animeDetails?id=`
                         + anime.animeId;
 
                 item.innerHTML =
