@@ -90,12 +90,12 @@
 
                     <li>
                         Anime :
-                        <strong>${animeCount != null ? animeCount : 0}</strong>
+                        <strong>${animeCountFooter != null ? animeCountFooter : 0}</strong>
                     </li>
 
                     <li>
                         Episodes :
-                        <strong>${episodeCount != null ? episodeCount : 0}</strong>
+                        <strong>${episodeCountFooter != null ? episodeCountFooter : 0}</strong>
                     </li>
 
                     <li>
