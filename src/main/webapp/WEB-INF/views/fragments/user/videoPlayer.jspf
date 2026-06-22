@@ -1,0 +1,265 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<section class="watch-player-section">
+
+    <div class="video-player-wrapper"
+         id="playerWrapper">
+
+        <%-- VIDEO --%>
+
+        <video
+            id="animePlayer"
+            class="anime-player"
+            preload="metadata"
+            playsinline
+            tabindex="0">
+
+            Your browser does not support HTML5 video.
+
+        </video>
+
+        <%-- BIG PLAY BUTTON --%>
+
+        <button
+            type="button"
+            id="bigPlayButton"
+            class="big-play-btn">
+
+            ▶
+
+        </button>
+
+        <%-- ======================================
+             QUALITY SWITCH LOADER
+        ======================================= --%>
+
+        <div
+            id="playerLoader"
+            class="player-loader hidden">
+
+            <div class="player-spinner"></div>
+
+        </div>
+
+        <%-- PLAYER CONTROLS --%>
+
+        <div
+            id="playerControls"
+            class="player-controls">
+
+            <%-- PROGRESS BAR --%>
+
+            <div class="progress-container">
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    class="progress-bar"
+                    min="0"
+                    max="100"
+                    value="0">
+
+            </div>
+
+            <%-- CONTROLS ROW --%>
+
+            <div class="controls-row">
+
+                <%-- ======================================
+                     LEFT CONTROLS
+                ======================================= --%>
+
+                <div class="controls-left">
+
+                    <%-- PLAY / PAUSE --%>
+
+                    <button
+                        type="button"
+                        id="playPauseBtn"
+                        class="player-btn">
+
+                        ▶
+
+                    </button>
+
+                    <%-- VOLUME --%>
+
+                    <div class="volume-container">
+
+                        <button
+                            type="button"
+                            id="muteBtn"
+                            class="player-btn">
+
+                            🔊
+
+                        </button>
+
+                        <input
+                            type="range"
+                            id="volumeSlider"
+                            class="volume-slider"
+                            min="0"
+                            max="1"
+                            step="0.05"
+                            value="1">
+
+                    </div>
+
+                    <%-- TIME --%>
+
+                    <span
+                        id="timeDisplay"
+                        class="time-display">
+
+                        00:00 / 00:00
+
+                    </span>
+
+                </div>
+
+                <%-- ======================================
+                     RIGHT CONTROLS
+                ======================================= --%>
+
+                <div class="controls-right">
+
+                    <%-- SUBTITLES --%>
+
+                    <select
+                        id="subtitleSelector"
+                        class="player-select">
+
+                        <option value="off">
+
+                            Subs
+
+                        </option>
+
+                        <option value="upload">
+
+                            +Load
+
+                        </option>
+
+                    </select>
+
+                    <%-- SUBTITLE UPLOAD --%>
+
+                    <input
+                        type="file"
+                        id="subtitleUpload"
+                        accept=".vtt,.srt,.ass,.ssa"
+                        hidden>
+
+                    <%-- QUALITY --%>
+
+                    <select
+                        id="qualitySelector"
+                        class="player-select">
+
+                        <option value="-1">
+
+                            Auto
+
+                        </option>
+
+                    </select>
+
+                    <%-- SPEED --%>
+
+                    <select
+                        id="speedSelector"
+                        class="player-select">
+
+                        <option value="0.5">
+
+                            0.5x
+
+                        </option>
+
+                        <option value="0.75">
+
+                            0.75x
+
+                        </option>
+
+                        <option value="1"
+                                selected>
+
+                            1x
+
+                        </option>
+
+                        <option value="1.25">
+
+                            1.25x
+
+                        </option>
+
+                        <option value="1.5">
+
+                            1.5x
+
+                        </option>
+
+                        <option value="2">
+
+                            2x
+
+                        </option>
+
+                    </select>
+
+                    <%-- FULLSCREEN --%>
+
+                    <button
+                        type="button"
+                        id="fullscreenBtn"
+                        class="player-btn">
+
+                        ⛶
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%--
+==========================================
+    HLS MASTER PLAYLIST
+
+    Example:
+
+    /stream/7/master.m3u8
+==========================================
+--%>
+
+<input
+    type="hidden"
+    id="masterPlaylist"
+    value="${pageContext.request.contextPath}${masterPlaylist}">
+
+<%--
+==========================================
+    AUTO NEXT EPISODE
+
+    Used by watch.js
+==========================================
+--%>
+
+<input
+    type="hidden"
+    id="nextEpisodeUrl"
+    value="${nextEpisode != null
+            ? pageContext.request.contextPath
+              .concat('/watch?episodeId=')
+              .concat(nextEpisode.episodeId.toString())
+            : ''}">
