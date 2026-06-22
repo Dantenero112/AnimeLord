@@ -10,9 +10,10 @@
     </button>
 
     <div class="navbar-brand-custom">
-
-        Anime<span>Lord</span>
-
+        <a href="${pageContext.request.contextPath}/"
+                   class="navbar-brand">
+            Anime<span>Lord</span>
+        </a>
     </div>
 
 </nav>
