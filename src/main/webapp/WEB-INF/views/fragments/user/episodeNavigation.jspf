@@ -1,0 +1,96 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<section class="watch-navigation-section">
+
+    <div class="watch-navigation">
+
+        <%-- Previous Episode --%>
+
+        <div class="watch-nav-left">
+
+            <c:choose>
+
+                <c:when test="${previousEpisode != null}">
+
+                    <a href="${pageContext.request.contextPath}/watch?episodeId=${previousEpisode.episodeId}"
+                       class="watch-nav-btn">
+
+                        ◀ Previous
+
+                    </a>
+
+                </c:when>
+
+                <c:otherwise>
+
+                    <button
+                        type="button"
+                        class="watch-nav-btn disabled"
+                        disabled>
+
+                        ◀ Previous
+
+                    </button>
+
+                </c:otherwise>
+
+            </c:choose>
+
+        </div>
+
+        <%-- Episode List --%>
+
+        <div class="watch-nav-center">
+
+            <button
+                type="button"
+                class="watch-nav-btn"
+
+                data-bs-toggle="offcanvas"
+                data-bs-target="#episodeListCanvas"
+                aria-controls="episodeListCanvas">
+
+                📋 Episode List
+
+            </button>
+
+        </div>
+
+        <%-- Next Episode --%>
+
+        <div class="watch-nav-right">
+
+            <c:choose>
+
+                <c:when test="${nextEpisode != null}">
+
+                    <a href="${pageContext.request.contextPath}/watch?episodeId=${nextEpisode.episodeId}"
+                       class="watch-nav-btn">
+
+                        Next ▶
+
+                    </a>
+
+                </c:when>
+
+                <c:otherwise>
+
+                    <button
+                        type="button"
+                        class="watch-nav-btn disabled"
+                        disabled>
+
+                        Next ▶
+
+                    </button>
+
+                </c:otherwise>
+
+            </c:choose>
+
+        </div>
+
+    </div>
+
+</section>
