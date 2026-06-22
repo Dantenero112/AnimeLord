@@ -1,0 +1,97 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="episodeListCanvas"
+     aria-labelledby="episodeListCanvasLabel">
+
+    <%-- Header --%>
+
+    <div class="offcanvas-header">
+
+        <h5 id="episodeListCanvasLabel"
+            class="offcanvas-title">
+
+            📋 Episode List
+
+        </h5>
+
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close">
+
+        </button>
+
+    </div>
+
+    <%-- Body --%>
+
+    <div class="offcanvas-body">
+
+        <c:choose>
+
+            <c:when test="${not empty episodeList}">
+
+                <div class="episode-list-container">
+
+                    <c:forEach items="${episodeList}"
+                               var="ep">
+
+                        <a href="${pageContext.request.contextPath}/watch?episodeId=${ep.episodeId}"
+                           class="episode-list-item
+                           ${ep.episodeId eq episode.episodeId ? 'active' : ''}"
+
+                           data-episode-id="${ep.episodeId}">
+
+                            <span class="episode-list-number">
+
+                                Episode ${ep.episodeNumber}
+
+                            </span>
+
+                            <c:if test="${not empty ep.episodeTitle}">
+
+                                <span class="episode-list-title">
+
+                                    ${ep.episodeTitle}
+
+                                </span>
+
+                            </c:if>
+
+                        </a>
+
+                    </c:forEach>
+
+                </div>
+
+            </c:when>
+
+            <c:otherwise>
+
+                <div class="empty-directory">
+
+                    <h5>
+
+                        No Episodes Found
+
+                    </h5>
+
+                    <p>
+
+                        This anime does not contain any episodes yet.
+
+                    </p>
+
+                </div>
+
+            </c:otherwise>
+
+        </c:choose>
+
+    </div>
+
+</div>
