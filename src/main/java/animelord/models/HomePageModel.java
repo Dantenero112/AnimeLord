@@ -145,12 +145,12 @@ public class HomePageModel
             PLATFORM STATS
         */
         request.setAttribute(
-                "animeCount",
+                "animeCountFooter",
                 animeDAO.getAnimeCount()
         );
 
         request.setAttribute(
-                "episodeCount",
+                "episodeCountFooter",
                 episodeDAO.getEpisodeCount()
         );
 
