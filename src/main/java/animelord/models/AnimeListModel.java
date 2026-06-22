@@ -1,6 +1,7 @@
 package animelord.models;
 
 import animelord.dao.AnimeDAO;
+import animelord.dao.EpisodeDAO;
 import animelord.entities.Anime;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,11 +20,10 @@ public class AnimeListModel
             HttpServletResponse response)
             throws Exception {
 
-        AnimeDAO animeDAO =
-                new AnimeDAO();
-
+        AnimeDAO animeDAO = new AnimeDAO();
+        EpisodeDAO episodeDAO = new EpisodeDAO();
         /*
-            LETTER FILTER
+            LETTER FILTER   
         */
         String letter =
                 request.getParameter(
@@ -116,6 +116,15 @@ public class AnimeListModel
                 animeList.size()
         );
 
+        request.setAttribute(
+                "animeCountFooter",
+                animeDAO.getAnimeCount()
+        );
+
+        request.setAttribute(
+                "episodeCountFooter",
+                episodeDAO.getEpisodeCount()
+        );
         /*
             FORWARD
         */
